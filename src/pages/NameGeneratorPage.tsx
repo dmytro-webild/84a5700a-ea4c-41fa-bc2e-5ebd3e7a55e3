@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import SEOHead from "@/components/kit/SEOHead";
 import { siteConfig } from "@/config/site";
 import {
@@ -12,11 +12,20 @@ import {
   Check,
   Building,
   Send,
+  FileText,
 } from "lucide-react";
 import BlurReveal from "@/components/kit/BlurReveal";
 import HeroFloatingCard from "@/components/sections/hero/HeroFloatingCard";
 import StartNowCTA from "@/components/sections/cta/StartNowCTA";
 import NameGeneratorTeaser from "@/components/sections/tools/NameGeneratorTeaser";
+import {
+  saveBusinessName,
+  saveShortlist,
+  getSavedShortlist,
+  getSavedBusinessName,
+  BUSINESS_NAME_EVENT,
+  type ShortlistedName,
+} from "@/utils/businessName";
 
 interface IndustryPreset {
   id: string;
@@ -77,13 +86,33 @@ export default function NameGeneratorPage() {
   const [selectedIndustry, setSelectedIndustry] = useState<IndustryPreset>(INDUSTRIES[0]);
   const [customKeyword, setCustomKeyword] = useState("");
   const [generatedList, setGeneratedList] = useState<GeneratedName[]>([]);
-  const [shortlist, setShortlist] = useState<GeneratedName[]>([]);
+  const [shortlist, setShortlist] = useState<ShortlistedName[]>(getSavedShortlist);
+  const [activeSavedName, setActiveSavedName] = useState<string>(getSavedBusinessName);
   const [copiedId, setCopiedId] = useState<string | null>(null);
 
   // Lead capture state
   const [leadName, setLeadName] = useState("");
   const [leadEmail, setLeadEmail] = useState("");
   const [leadSubmitted, setLeadSubmitted] = useState(false);
+
+  useEffect(() => {
+    const handleUpdate = (e: Event) => {
+      const customEvent = e as CustomEvent<string>;
+      if (customEvent.detail) {
+        setActiveSavedName(customEvent.detail);
+      } else {
+        setActiveSavedName(getSavedBusinessName());
+      }
+      setShortlist(getSavedShortlist());
+    };
+
+    window.addEventListener(BUSINESS_NAME_EVENT, handleUpdate);
+    window.addEventListener("storage", handleUpdate);
+    return () => {
+      window.removeEventListener(BUSINESS_NAME_EVENT, handleUpdate);
+      window.removeEventListener("storage", handleUpdate);
+    };
+  }, []);
 
   const handleGenerate = () => {
     const baseWord = customKeyword.trim()
@@ -114,11 +143,22 @@ export default function NameGeneratorPage() {
   };
 
   const toggleShortlist = (item: GeneratedName) => {
+    let updated: ShortlistedName[];
     if (shortlist.some((s) => s.id === item.id)) {
-      setShortlist(shortlist.filter((s) => s.id !== item.id));
+      updated = shortlist.filter((s) => s.id !== item.id);
     } else {
-      setShortlist([...shortlist, item]);
+      updated = [...shortlist, { id: item.id, name: item.name, category: item.category, score: item.score, tag: item.tag, reason: item.reason }];
+      // Automatically activate saved business name if first item
+      saveBusinessName(item.name);
+      setActiveSavedName(item.name);
     }
+    setShortlist(updated);
+    saveShortlist(updated);
+  };
+
+  const handleSelectForLetterhead = (name: string) => {
+    saveBusinessName(name);
+    setActiveSavedName(name);
   };
 
   const copyToClipboard = (text: string, id: string) => {
@@ -237,24 +277,48 @@ export default function NameGeneratorPage() {
 
                   {generatedList.map((item) => {
                     const isShortlisted = shortlist.some((s) => s.id === item.id);
+                    const isLetterheadActive = activeSavedName.toLowerCase() === item.name.toLowerCase();
                     return (
                       <div
                         key={item.id}
-                        className="kit-card p-4 border border-border flex items-center justify-between gap-4 hover:border-primary/50 transition-all"
+                        className={`kit-card p-4 border flex items-center justify-between gap-4 transition-all ${
+                          isLetterheadActive
+                            ? "border-primary bg-primary/5"
+                            : "border-border hover:border-primary/50"
+                        }`}
                       >
-                        <div className="space-y-1">
-                          <div className="flex items-center gap-2">
+                        <div className="space-y-1 min-w-0 flex-1">
+                          <div className="flex flex-wrap items-center gap-2">
                             <span className="font-bold text-[length:var(--text-body-lg)] text-foreground">
                               {item.name}
                             </span>
                             <span className="text-[10px] font-mono px-2 py-0.5 rounded bg-emerald-500/20 text-emerald-400 font-semibold">
                               {item.tag}
                             </span>
+                            {isLetterheadActive && (
+                              <span className="text-[10px] font-mono px-2 py-0.5 rounded bg-primary text-primary-foreground font-bold flex items-center gap-1">
+                                <FileText className="size-3" /> Active Letterhead Name
+                              </span>
+                            )}
                           </div>
                           <p className="text-xs text-muted-foreground">{item.reason}</p>
                         </div>
 
                         <div className="flex items-center gap-2 shrink-0">
+                          <button
+                            onClick={() => handleSelectForLetterhead(item.name)}
+                            className={`p-2 rounded-lg border text-xs font-semibold flex items-center gap-1.5 transition-all ${
+                              isLetterheadActive
+                                ? "bg-primary text-primary-foreground border-primary"
+                                : "bg-secondary border-border text-muted-foreground hover:text-foreground"
+                            }`}
+                            title="Use this business name on Letterhead Designs"
+                          >
+                            <FileText className="size-4" />
+                            <span className="hidden sm:inline">
+                              {isLetterheadActive ? "Active" : "Use for Letterhead"}
+                            </span>
+                          </button>
                           <button
                             onClick={() => copyToClipboard(item.name, item.id)}
                             className="p-2 rounded-lg bg-secondary text-muted-foreground hover:text-foreground"
@@ -314,20 +378,46 @@ export default function NameGeneratorPage() {
                 </p>
               ) : (
                 <ul className="space-y-2 max-h-60 overflow-y-auto pr-1">
-                  {shortlist.map((item) => (
-                    <li
-                      key={item.id}
-                      className="p-3 rounded-lg bg-background border border-border flex justify-between items-center text-xs font-semibold"
-                    >
-                      <span>{item.name}</span>
-                      <button
-                        onClick={() => toggleShortlist(item)}
-                        className="text-muted-foreground hover:text-red-400"
+                  {shortlist.map((item) => {
+                    const isLetterheadActive = activeSavedName.toLowerCase() === item.name.toLowerCase();
+                    return (
+                      <li
+                        key={item.id}
+                        className={`p-3 rounded-lg border flex justify-between items-center text-xs font-semibold transition-all ${
+                          isLetterheadActive
+                            ? "bg-primary/10 border-primary text-foreground"
+                            : "bg-background border-border"
+                        }`}
                       >
-                        <Trash2 className="size-3.5" />
-                      </button>
-                    </li>
-                  ))}
+                        <div className="flex items-center gap-2">
+                          <span>{item.name}</span>
+                          {isLetterheadActive && (
+                            <span className="text-[10px] font-mono px-1.5 py-0.5 rounded bg-primary text-primary-foreground font-bold">
+                              Letterhead Active
+                            </span>
+                          )}
+                        </div>
+                        <div className="flex items-center gap-2">
+                          {!isLetterheadActive && (
+                            <button
+                              onClick={() => handleSelectForLetterhead(item.name)}
+                              className="text-[10px] text-primary hover:underline font-mono"
+                              title="Set for letterhead preview"
+                            >
+                              Use on Letterhead
+                            </button>
+                          )}
+                          <button
+                            onClick={() => toggleShortlist(item as GeneratedName)}
+                            className="text-muted-foreground hover:text-red-400"
+                            title="Remove from shortlist"
+                          >
+                            <Trash2 className="size-3.5" />
+                          </button>
+                        </div>
+                      </li>
+                    );
+                  })}
                 </ul>
               )}
             </div>
