@@ -179,7 +179,7 @@ export default function BlogPage() {
               to="/ebook"
               className="rounded-xl bg-amber-500 px-6 py-3.5 text-sm font-bold text-black hover:bg-amber-400 transition-all focus-visible:ring-2 focus-visible:ring-amber-400 focus-visible:outline-none"
             >
-              Get Your CAC Certificate — ₦10,000
+              Get the Guide — ₦10,000
             </Link>
             <Link
               to="/do-it-with-us"

@@ -37,7 +37,7 @@ export default function HomePage() {
           titleMuted="Yourself. Fast & Hassle-Free."
           description="Skip expensive lawyer & agent fees. Our step-by-step walkthrough and live 1-on-1 human support take you from business name approval to your official CAC certificate, guaranteed."
           primaryButton={{
-            text: "Get Your CAC Certificate — ₦10,000",
+            text: "Get the Guide — ₦10,000",
             href: "#pricing"
           }}
           secondaryButton={{
@@ -120,7 +120,7 @@ export default function HomePage() {
                 "Instant download after purchase"
               ],
               button: {
-                text: "Get Your CAC Certificate — ₦10,000",
+                text: "Get the Guide — ₦10,000",
                 href: "#start-now"
               }
             },

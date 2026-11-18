@@ -25,7 +25,7 @@ export default function StartNowCTA({ className }: { className?: string }) {
 
             <BlurReveal delay={0.15} className="flex flex-col sm:flex-row items-center justify-center gap-4 w-full sm:w-auto pt-4">
               <a href="#pricing" className="btn-primary w-full sm:w-auto justify-center text-base px-8 py-3.5 font-bold">
-                <span>Get Your CAC Certificate — ₦10,000</span>
+                <span>Get the Guide — ₦10,000</span>
                 <ArrowRight className="size-4" />
               </a>
               <a href="#pricing" className="btn-secondary w-full sm:w-auto justify-center text-base px-8 py-3.5 font-bold">

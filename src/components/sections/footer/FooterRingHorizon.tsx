@@ -22,7 +22,7 @@ export default function FooterRingHorizon({
   title = "Yourself. This week.",
   titleMuted = "Register your business with CAC.",
   note = "Clear step-by-step guidance, live 1-on-1 support, and zero hidden agent fees. An independent training platform for Nigerian entrepreneurs.",
-  primaryButton = { text: "Get DIY Ebook — ₦10,000", href: "/ebook" },
+  primaryButton = { text: "Get the Guide — ₦10,000", href: "/ebook" },
   columns = [
     {
       title: "Products & Tools",

@@ -54,7 +54,7 @@ export default function Layout() {
             },
           ]}
           primaryButton={{
-            text: "Get Your CAC Certificate",
+            text: "Get the Guide",
             href: "/ebook",
           }}
           secondaryButton={{
