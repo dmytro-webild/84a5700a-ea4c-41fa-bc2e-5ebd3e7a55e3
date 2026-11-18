@@ -5,6 +5,7 @@ import { routes } from './routes'
 import Layout from './components/Layout'
 
 const pages = import.meta.glob('./pages/*.tsx')
+const BlogPostPage = lazy(() => import('./pages/BlogPostPage'))
 
 function getPageComponent(pageFile: string) {
   const key = `./pages/${pageFile}.tsx`
@@ -231,6 +232,7 @@ function App() {
                 if (!Page) return null
                 return <Route key={route.path} path={route.path} element={<Page />} />
               })}
+              <Route path="/blog/:slug" element={<BlogPostPage />} />
             </Route>
             <Route path="*" element={<Navigate to="/" replace />} />
           </Routes>

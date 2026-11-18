@@ -6,10 +6,11 @@ export interface Route {
 
 export const routes: Route[] = [
   { path: '/', label: 'Home', pageFile: 'HomePage' },
-  { path: '/ebook', label: 'Ebook Guide', pageFile: 'EbookPage' },
+  { path: '/ebook', label: 'DIY Ebook', pageFile: 'EbookPage' },
   { path: '/do-it-with-us', label: 'Do It With Us', pageFile: 'DoItWithUsPage' },
   { path: '/name-generator', label: 'Name Generator', pageFile: 'NameGeneratorPage' },
   { path: '/add-ons', label: 'Add-ons & Design', pageFile: 'AddonsPage' },
+  { path: '/blog', label: 'Blog & Guides', pageFile: 'BlogPage' },
   { path: '/about', label: 'About', pageFile: 'AboutPage' },
   { path: '/legal', label: 'Legal & Privacy', pageFile: 'LegalPage' },
   { path: '/terms', label: 'Terms of Service', pageFile: 'LegalPage' },

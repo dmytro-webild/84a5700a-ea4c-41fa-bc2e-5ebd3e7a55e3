@@ -1,4 +1,5 @@
 import { useState } from "react";
+import SEOHead from "@/components/kit/SEOHead";
 import {
   Video,
   CheckCircle,
@@ -93,6 +94,10 @@ export default function DoItWithUsPage() {
 
   return (
     <>
+      <SEOHead
+        seo={siteConfig.seo.pages.doItWithUs}
+        schema={siteConfig.schema.doItWithUsService}
+      />
       {/* 1. Hero Section */}
       <div id="diwu-hero" data-webild-section="HeroFloatingCard" data-section="hero">
         <HeroFloatingCard

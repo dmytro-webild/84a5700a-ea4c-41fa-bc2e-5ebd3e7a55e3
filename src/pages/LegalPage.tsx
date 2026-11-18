@@ -1,4 +1,5 @@
 import { useState } from "react";
+import SEOHead from "@/components/kit/SEOHead";
 import { siteConfig } from "@/config/site";
 
 export default function LegalPage() {
@@ -6,6 +7,7 @@ export default function LegalPage() {
 
   return (
     <div className="min-h-screen bg-background text-foreground py-16 px-4">
+      <SEOHead seo={siteConfig.seo.pages.legal} />
       <div className="mx-auto max-w-4xl space-y-8">
         {/* Header */}
         <div className="text-center space-y-3">

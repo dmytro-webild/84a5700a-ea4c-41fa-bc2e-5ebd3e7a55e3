@@ -1,3 +1,4 @@
+import SEOHead from "@/components/kit/SEOHead";
 import BlurReveal from "@/components/kit/BlurReveal";
 import HeroFloatingCard from "@/components/sections/hero/HeroFloatingCard";
 import FounderStory from "@/components/sections/about/FounderStory";
@@ -33,6 +34,7 @@ const CORE_VALUES = [
 export default function AboutPage() {
   return (
     <>
+      <SEOHead seo={siteConfig.seo.pages.about} />
       {/* 1. Hero */}
       <div id="about-hero" data-webild-section="HeroFloatingCard" data-section="hero">
         <HeroFloatingCard
