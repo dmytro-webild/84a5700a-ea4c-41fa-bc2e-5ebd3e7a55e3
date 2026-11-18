@@ -18,6 +18,10 @@ export default function Layout() {
               href: "#process"
             },
             {
+              name: "Guarantee",
+              href: "#trust"
+            },
+            {
               name: "Pricing",
               href: "#pricing"
             },
@@ -56,6 +60,10 @@ export default function Layout() {
                 {
                   text: "How It Works",
                   href: "#process"
+                },
+                {
+                  text: "Satisfaction Guarantee",
+                  href: "#trust"
                 },
                 {
                   text: "Pricing Plans",
