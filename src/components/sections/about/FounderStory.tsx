@@ -73,7 +73,7 @@ export default function FounderStory({ className }: { className?: string }) {
                 Exactly three minutes after payment confirmation, the portal status changed to APPROVED. I had my official CAC reservation letter right in front of me — without paying a single naira in middleman markups.
               </p>
               <p>
-                That breakthrough gave birth to <strong className="text-foreground">Register It Yourself (RIY)</strong>. We exist to give Nigerian entrepreneurs the exact video walkthroughs, proven templates, and direct support required to register independently, fast and stress-free.
+                That breakthrough gave birth to <strong className="text-foreground">Register It Yourself (RIY)</strong>. We exist to give Nigerian entrepreneurs a single, comprehensive step-by-step PDF guide, proven templates, and direct support required to register independently, fast and stress-free. (Note: there is only one PDF guide available and no video guide — if you require extra hands-on support beyond the PDF, you can pay ₦15,000 for a live 1-on-1 guide session).
               </p>
             </BlurReveal>
 
@@ -84,7 +84,7 @@ export default function FounderStory({ className }: { className?: string }) {
               </div>
               <div className="flex items-center gap-2 text-sm text-foreground">
                 <CheckCircle className="size-4 text-primary" />
-                <span>100% Real Portal Screen Recs</span>
+                <span>100% Real Portal Screenshots</span>
               </div>
               <div className="flex items-center gap-2 text-sm text-foreground">
                 <CheckCircle className="size-4 text-primary" />

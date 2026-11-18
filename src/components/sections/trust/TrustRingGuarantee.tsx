@@ -97,7 +97,7 @@ export default function TrustRingGuarantee({
     {
       icon: "shield",
       title: "100% CAC Approval Guarantee",
-      description: "Follow our verified step-by-step videos. If CAC raises a query based on our guides, we help fix it for free or give you a full refund."
+      description: "Follow our verified step-by-step PDF guide. If CAC raises a query based on our guide, we help fix it for free or give you a full refund."
     },
     {
       icon: "support",

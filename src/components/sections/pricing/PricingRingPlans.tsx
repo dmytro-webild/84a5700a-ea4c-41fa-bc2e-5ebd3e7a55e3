@@ -37,9 +37,9 @@ const defaultItems: Plan[] = [
     title: "Do it yourself",
     price: "₦10,000",
     period: "one-time payment",
-    description: "The complete Register It Yourself ebook guide for self-starter founders.",
+    description: "The single Register It Yourself PDF ebook guide for self-starter founders (no video guide included or needed).",
     features: [
-      "Full Register It Yourself Ebook (Instant Download)",
+      "Single Register It Yourself PDF Ebook (Instant Download)",
       "Screen-by-screen CAC walkthrough (Business Names & Limited Companies)",
       "3-minute name search strategy & query-proofing tips",
       "Fast query resolution guide (24h turnaround)",
@@ -74,7 +74,7 @@ const PricingRingPlans = ({
   titleDim = "zero hidden agent fees",
   description = "Select the level of support you need to get your business officially registered with CAC this week.",
   items = defaultItems,
-  upgradeNote = "Already bought the ebook? Upgrade to Do It With Us for just ₦15,000. We deduct what you already paid.",
+  upgradeNote = "Need hands-on support beyond the PDF guide? Pay ₦15,000 to get a live 1-on-1 guide session (your ₦10,000 ebook payment is fully deducted).",
   ariaLabel,
   className,
 }: PricingRingPlansProps) => {
