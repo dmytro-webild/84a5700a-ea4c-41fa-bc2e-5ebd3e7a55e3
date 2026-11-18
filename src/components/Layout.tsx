@@ -1,50 +1,51 @@
 import { Outlet } from "react-router-dom";
 import NavbarGlidePill from "@/components/navbars/NavbarGlidePill";
 import FooterRingHorizon from "@/components/sections/footer/FooterRingHorizon";
+import { siteConfig } from "@/config/site";
 
 export default function Layout() {
   return (
     <div className="relative isolate min-h-svh flex flex-col bg-background text-foreground" data-button="default" data-card="glass" data-pattern="sky">
       <header data-webild-section="Header">
         <NavbarGlidePill
-          brand="RIY"
+          brand={siteConfig.shortName}
           navItems={[
             {
-              name: "Why RIY",
-              href: "#about"
+              name: "Home",
+              href: "/",
             },
             {
-              name: "How It Works",
-              href: "#process"
+              name: "DIY Ebook",
+              href: "/ebook",
+            },
+            {
+              name: "Do It With Us",
+              href: "/do-it-with-us",
+            },
+            {
+              name: "Name Generator",
+              href: "/name-generator",
+            },
+            {
+              name: "About Founder",
+              href: "/about",
             },
             {
               name: "Pricing",
-              href: "#pricing"
-            },
-            {
-              name: "Name Checker",
-              href: "#name-teaser"
-            },
-            {
-              name: "Ebook",
-              href: "#ebook-grid"
-            },
-            {
-              name: "Founder",
-              href: "#founder"
+              href: "/#pricing",
             },
             {
               name: "FAQ",
-              href: "#faq"
-            }
+              href: "/#faq",
+            },
           ]}
           primaryButton={{
             text: "Get the Guide — ₦10k",
-            href: "#pricing"
+            href: "/ebook",
           }}
           secondaryButton={{
             text: "Do It With Us — ₦25k",
-            href: "#pricing"
+            href: "/do-it-with-us",
           }}
         />
       </header>
@@ -53,93 +54,93 @@ export default function Layout() {
       </main>
       <footer data-webild-section="Footer" data-section="footer">
         <FooterRingHorizon
-          brand="Register It Yourself"
+          brand={siteConfig.name}
           titleMuted="Register your business with CAC."
           title="Yourself. This week."
-          note="Clear step-by-step video guidance, direct support, and zero hidden agent fees. An independent training platform for Nigerian business founders."
+          note="Clear step-by-step guidance, live 1-on-1 support, and zero hidden agent fees. An independent training platform for Nigerian entrepreneurs."
           primaryButton={{
-            text: "Start Registration",
-            href: "#pricing"
+            text: "Get DIY Ebook — ₦10,000",
+            href: "/ebook",
           }}
           columns={[
             {
-              title: "Platform",
+              title: "Products & Tools",
               links: [
                 {
-                  text: "How It Works",
-                  href: "#process"
+                  text: "DIY Ebook Sales Page",
+                  href: "/ebook",
+                },
+                {
+                  text: "Do It With Us (Live Session)",
+                  href: "/do-it-with-us",
+                },
+                {
+                  text: "Free Name Generator Tool",
+                  href: "/name-generator",
                 },
                 {
                   text: "Pricing & Plans",
-                  href: "#pricing"
+                  href: "/#pricing",
                 },
-                {
-                  text: "Name Checker Tool",
-                  href: "#name-teaser"
-                },
-                {
-                  text: "3D Letterhead Showcase",
-                  href: "#letterhead-showcase"
-                },
-                {
-                  text: "Ebook Curriculum",
-                  href: "#ebook-grid"
-                }
-              ]
+              ],
             },
             {
               title: "About & Proof",
               links: [
                 {
-                  text: "Why RIY",
-                  href: "#about"
+                  text: "About & Founder's Story",
+                  href: "/about",
                 },
                 {
-                  text: "Founder's Story",
-                  href: "#founder"
+                  text: "Dr. Michelle's Story",
+                  href: "/about#founder-story",
                 },
                 {
-                  text: "Testimonials",
-                  href: "#testimonial"
+                  text: "CAC Approval Guarantee",
+                  href: "/#trust",
                 },
                 {
-                  text: "FAQ & Help",
-                  href: "#faq"
-                }
-              ]
+                  text: "Frequently Asked Questions",
+                  href: "/#faq",
+                },
+              ],
             },
             {
               title: "Contact & Legal",
               links: [
                 {
-                  text: "hello@registerityourself.com",
-                  href: "mailto:hello@registerityourself.com"
+                  text: siteConfig.email,
+                  href: `mailto:${siteConfig.email}`,
+                },
+                {
+                  text: `WhatsApp / Call: ${siteConfig.whatsapp}`,
+                  href: `https://wa.me/${siteConfig.whatsapp.replace(/[^0-9]/g, "")}`,
+                },
+                {
+                  text: `CAC Reg: ${siteConfig.cacNumber}`,
+                  href: "#",
                 },
                 {
                   text: "Lagos, Nigeria (9am–5pm WAT)",
-                  href: "#start-now"
+                  href: "/about",
                 },
-                {
-                  text: "WhatsApp Support",
-                  href: "#start-now"
-                }
-              ]
-            }
+              ],
+            },
           ]}
-          copyright="© 2026 Register It Yourself. All rights reserved."
+          copyright={`© 2026 ${siteConfig.name}. All rights reserved.`}
           legal={[
             {
               text: "Privacy Policy",
-              href: "#"
+              href: "#",
             },
             {
               text: "Terms of Service",
-              href: "#"
+              href: "#",
             },
             {
               text: "CAC Disclaimer",
-              href: "#"
-            }
+              href: "#",
+            },
           ]}
         />
       </footer>
