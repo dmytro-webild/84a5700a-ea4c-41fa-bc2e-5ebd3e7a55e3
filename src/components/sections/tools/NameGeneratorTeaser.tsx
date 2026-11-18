@@ -1,6 +1,11 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { CheckCircle, AlertCircle, Sparkles, Search, HelpCircle, ArrowRight } from "lucide-react";
 import BlurReveal from "@/components/kit/BlurReveal";
+import {
+  getSavedBusinessName,
+  saveBusinessName,
+  BUSINESS_NAME_EVENT,
+} from "@/utils/businessName";
 
 const RESERVED_WORDS = [
   "national",
@@ -30,7 +35,28 @@ const SUFFIX_SUGGESTIONS = [
 ];
 
 export default function NameGeneratorTeaser({ className }: { className?: string }) {
-  const [inputName, setInputName] = useState("Velox Express");
+  const [inputName, setInputName] = useState<string>(getSavedBusinessName);
+
+  useEffect(() => {
+    const handleUpdate = (e: Event) => {
+      const customEvent = e as CustomEvent<string>;
+      if (customEvent.detail) {
+        setInputName(customEvent.detail);
+      }
+    };
+
+    window.addEventListener(BUSINESS_NAME_EVENT, handleUpdate);
+    return () => {
+      window.removeEventListener(BUSINESS_NAME_EVENT, handleUpdate);
+    };
+  }, []);
+
+  const handleInputChange = (val: string) => {
+    setInputName(val);
+    if (val.trim().length > 2) {
+      saveBusinessName(val.trim());
+    }
+  };
 
   const words = inputName.trim().split(/\s+/).filter(Boolean);
   const lowercaseWords = words.map((w) => w.toLowerCase());
@@ -93,7 +119,7 @@ export default function NameGeneratorTeaser({ className }: { className?: string 
                   <input
                     type="text"
                     value={inputName}
-                    onChange={(e) => setInputName(e.target.value)}
+                    onChange={(e) => handleInputChange(e.target.value)}
                     placeholder="e.g. Crestview Logistics"
                     className="w-full bg-background/80 border border-border rounded-xl px-4 py-3.5 pl-11 text-[length:var(--text-body-lg)] focus:outline-none focus:border-primary transition-colors"
                   />
@@ -112,7 +138,7 @@ export default function NameGeneratorTeaser({ className }: { className?: string 
                       key={suf}
                       onClick={() => {
                         const base = inputName.trim().split(/\s+/)[0] || "Velox";
-                        setInputName(`${base} ${suf}`);
+                        handleInputChange(`${base} ${suf}`);
                       }}
                       className="px-3 py-1.5 rounded-lg bg-secondary text-xs hover:bg-primary/20 hover:text-primary transition-colors"
                     >

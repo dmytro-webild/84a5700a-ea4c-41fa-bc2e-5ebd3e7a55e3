@@ -1,10 +1,59 @@
-import { useState } from "react";
-import { FileText, CheckCircle2, Download, Edit3, Sparkles } from "lucide-react";
+import { useState, useEffect } from "react";
+import { FileText, CheckCircle2, Download, Edit3, Sparkles, Building2, Check } from "lucide-react";
 import BlurReveal from "@/components/kit/BlurReveal";
 import DepthTiltCard from "@/components/library/effects/DepthTiltCard";
+import {
+  getSavedBusinessName,
+  getSavedShortlist,
+  saveBusinessName,
+  getBusinessInitials,
+  getBusinessSlug,
+  BUSINESS_NAME_EVENT,
+  type ShortlistedName,
+} from "@/utils/businessName";
 
 export default function Letterhead3DShowcase({ className }: { className?: string }) {
   const [activePreset, setActivePreset] = useState<"executive" | "modern">("executive");
+  const [businessName, setBusinessName] = useState<string>(getSavedBusinessName);
+  const [shortlist, setShortlist] = useState<ShortlistedName[]>(getSavedShortlist);
+  const [isEditingInline, setIsEditingInline] = useState<boolean>(false);
+  const [customInput, setCustomInput] = useState<string>("");
+
+  useEffect(() => {
+    const handleUpdate = (e: Event) => {
+      const customEvent = e as CustomEvent<string>;
+      if (customEvent.detail) {
+        setBusinessName(customEvent.detail);
+      } else {
+        setBusinessName(getSavedBusinessName());
+      }
+      setShortlist(getSavedShortlist());
+    };
+
+    window.addEventListener(BUSINESS_NAME_EVENT, handleUpdate);
+    window.addEventListener("storage", handleUpdate);
+
+    return () => {
+      window.removeEventListener(BUSINESS_NAME_EVENT, handleUpdate);
+      window.removeEventListener("storage", handleUpdate);
+    };
+  }, []);
+
+  const handleSelectName = (name: string) => {
+    setBusinessName(name);
+    saveBusinessName(name);
+    setIsEditingInline(false);
+  };
+
+  const handleApplyCustomName = () => {
+    if (customInput.trim()) {
+      handleSelectName(customInput.trim());
+      setCustomInput("");
+    }
+  };
+
+  const initials = getBusinessInitials(businessName);
+  const slug = getBusinessSlug(businessName);
 
   return (
     <section id="letterhead" aria-label="3D Letterhead Showcase" className={`relative py-[var(--section-space)] text-foreground ${className ?? ""}`}>
@@ -22,6 +71,73 @@ export default function Letterhead3DShowcase({ className }: { className?: string
 
             <BlurReveal as="p" delay={0.1} className="text-[length:var(--text-body-lg)] text-muted-foreground leading-relaxed">
               When you complete your CAC registration with us, our design team builds 2 bespoke corporate letterheads tailored to your new business identity — delivered 2–3 working days after CAC approval.
+            </BlurReveal>
+
+            {/* Dynamic Business Name Status Bar */}
+            <BlurReveal delay={0.12} className="kit-card p-4 border border-primary/40 bg-primary/5 rounded-xl space-y-2">
+              <div className="flex items-center justify-between">
+                <span className="text-xs font-mono uppercase text-primary font-bold flex items-center gap-1.5">
+                  <Building2 className="size-4" /> Customized For Your Brand
+                </span>
+                <button
+                  onClick={() => setIsEditingInline(!isEditingInline)}
+                  className="text-xs text-primary hover:underline font-medium flex items-center gap-1"
+                >
+                  <Edit3 className="size-3" /> {isEditingInline ? "Done" : "Change Name"}
+                </button>
+              </div>
+
+              {isEditingInline ? (
+                <div className="flex gap-2 pt-1">
+                  <input
+                    type="text"
+                    placeholder="Enter business name..."
+                    value={customInput}
+                    onChange={(e) => setCustomInput(e.target.value)}
+                    onKeyDown={(e) => e.key === "Enter" && handleApplyCustomName()}
+                    className="w-full bg-background border border-border rounded-lg px-3 py-1.5 text-xs focus:outline-none focus:border-primary"
+                  />
+                  <button
+                    onClick={handleApplyCustomName}
+                    className="px-3 py-1.5 bg-primary text-primary-foreground rounded-lg text-xs font-semibold hover:opacity-90 transition-opacity flex items-center gap-1 shrink-0"
+                  >
+                    <Check className="size-3.5" /> Apply
+                  </button>
+                </div>
+              ) : (
+                <div className="flex items-center justify-between">
+                  <span className="text-sm font-bold text-foreground font-sans truncate pr-2">
+                    {businessName}
+                  </span>
+                  <span className="text-[10px] font-mono px-2 py-0.5 rounded bg-emerald-500/20 text-emerald-400 font-semibold shrink-0">
+                    Live Preview
+                  </span>
+                </div>
+              )}
+
+              {/* Shortlist Pills if available */}
+              {shortlist.length > 0 && !isEditingInline && (
+                <div className="pt-2 border-t border-border/50">
+                  <p className="text-[10px] text-muted-foreground font-mono mb-1.5">
+                    Or select from your saved shortlist:
+                  </p>
+                  <div className="flex flex-wrap gap-1.5 max-h-20 overflow-y-auto">
+                    {shortlist.map((item) => (
+                      <button
+                        key={item.id}
+                        onClick={() => handleSelectName(item.name)}
+                        className={`text-[11px] px-2.5 py-1 rounded-md border transition-all ${
+                          businessName.toLowerCase() === item.name.toLowerCase()
+                            ? "bg-primary text-primary-foreground border-primary font-bold"
+                            : "bg-secondary/70 text-muted-foreground hover:text-foreground border-border"
+                        }`}
+                      >
+                        {item.name}
+                      </button>
+                    ))}
+                  </div>
+                </div>
+              )}
             </BlurReveal>
 
             <BlurReveal delay={0.15} className="flex flex-col gap-3">
@@ -95,21 +211,21 @@ export default function Letterhead3DShowcase({ className }: { className?: string
                 >
                   {/* Paper Header */}
                   <div>
-                    <div className="flex items-start justify-between">
-                      <div>
-                        <div className="text-xl font-bold tracking-tight uppercase">
-                          VELOX ENTERPRISES LTD
+                    <div className="flex items-start justify-between gap-4">
+                      <div className="min-w-0 flex-1">
+                        <div className="text-xl font-bold tracking-tight uppercase break-words leading-tight">
+                          {businessName}
                         </div>
                         <p
-                          className={`text-xs mt-0.5 font-mono ${
+                          className={`text-xs mt-1 font-mono ${
                             activePreset === "executive" ? "text-amber-400" : "text-amber-700"
                           }`}
                         >
                           RC NUMBER: 7482910 · TIN: 28940192-0001
                         </p>
                       </div>
-                      <div className="size-10 rounded-lg border flex items-center justify-center font-bold text-sm bg-primary/20 text-primary border-primary/40">
-                        VE
+                      <div className="size-10 rounded-lg border flex items-center justify-center font-bold text-sm bg-primary/20 text-primary border-primary/40 shrink-0 uppercase font-mono">
+                        {initials}
                       </div>
                     </div>
                     <div
@@ -125,7 +241,7 @@ export default function Letterhead3DShowcase({ className }: { className?: string
                   <div className="space-y-3 py-4 opacity-80 font-mono text-xs">
                     <p className="font-semibold">To: Whom It May Concern,</p>
                     <p className="leading-relaxed">
-                      This official corporate letterhead verifies the registration of Velox Enterprises Ltd with the Corporate Affairs Commission (CAC) under the Companies and Allied Matters Act.
+                      This official corporate letterhead verifies the registration of <strong className="font-bold underline decoration-primary/50 underline-offset-2">{businessName}</strong> with the Corporate Affairs Commission (CAC) under the Companies and Allied Matters Act.
                     </p>
                     <p className="leading-relaxed">
                       All operations, banking transactions, and official correspondence adhere to regulatory guidelines set by the Federal Republic of Nigeria.
@@ -143,9 +259,9 @@ export default function Letterhead3DShowcase({ className }: { className?: string
                   </div>
 
                   {/* Paper Footer */}
-                  <div className="pt-4 border-t border-current/20 flex flex-wrap justify-between text-[10px] opacity-70 font-mono">
+                  <div className="pt-4 border-t border-current/20 flex flex-wrap justify-between text-[10px] opacity-70 font-mono gap-2">
                     <span>📍 14 Victoria Island Way, Lagos, Nigeria</span>
-                    <span>✉️ contact@veloxenterprises.ng</span>
+                    <span>✉️ contact@{slug}.ng</span>
                   </div>
                 </div>
 
