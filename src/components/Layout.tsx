@@ -45,6 +45,10 @@ export default function Layout() {
               href: "/add-ons",
             },
             {
+              name: "Blog & Guides",
+              href: "/blog",
+            },
+            {
               name: "About",
               href: "/about",
             },

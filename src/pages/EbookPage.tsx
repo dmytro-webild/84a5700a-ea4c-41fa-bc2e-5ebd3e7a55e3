@@ -1,4 +1,5 @@
 import { useState } from "react";
+import SEOHead from "@/components/kit/SEOHead";
 import {
   CheckCircle,
   FileCheck,
@@ -124,6 +125,10 @@ export default function EbookPage() {
 
   return (
     <>
+      <SEOHead
+        seo={siteConfig.seo.pages.ebook}
+        schema={siteConfig.schema.ebookProduct}
+      />
       {/* 1. Hero Section */}
       <div id="ebook-hero" data-webild-section="HeroFloatingCard" data-section="hero">
         <HeroFloatingCard

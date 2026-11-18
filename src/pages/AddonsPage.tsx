@@ -1,5 +1,7 @@
 import { useState } from "react";
 import PaystackCheckoutModal from "@/components/kit/PaystackCheckoutModal";
+import SEOHead from "@/components/kit/SEOHead";
+import { siteConfig } from "@/config/site";
 
 export default function AddonsPage() {
   const [paystackOpen, setPaystackOpen] = useState(false);
@@ -8,50 +10,7 @@ export default function AddonsPage() {
   const [tmName, setTmName] = useState("");
   const [tmContact, setTmContact] = useState("");
 
-  const addonServices = [
-    {
-      title: "2 Custom Letterhead Designs",
-      badge: "Included in Do It With Us",
-      price: "₦5,000",
-      description: "Print-ready PDF + editable Word/Docs template formatted for official company correspondence.",
-      popular: true,
-    },
-    {
-      title: "Extra Letterhead Variations",
-      badge: "Add-on",
-      price: "₦3,000 each",
-      description: "Additional letterhead style variations for secondary brands or subsidiary divisions.",
-      popular: false,
-    },
-    {
-      title: "Professional Business Card Design",
-      badge: "Brand Identity",
-      price: "₦5,000",
-      description: "Double-sided print-ready business card layout with QR code link to your website/WhatsApp.",
-      popular: false,
-    },
-    {
-      title: "Clickable HTML Email Signature",
-      badge: "Corporate Email",
-      price: "₦4,000",
-      description: "Clickable email signature for Gmail, Outlook & Apple Mail with social icons & phone link.",
-      popular: false,
-    },
-    {
-      title: "Business Starter Documents Kit",
-      badge: "Essential Templates",
-      price: "₦12,000",
-      description: "Branded invoice, official receipt, business quotation, and standard service agreement contract templates.",
-      popular: true,
-    },
-    {
-      title: "Trademark Filing Support",
-      badge: "Legal Protection",
-      price: "Quote-based",
-      description: "Protect your logo and brand name across Class 35 & Class 42 in Nigeria with official trademark filing support.",
-      quote: true,
-    },
-  ];
+  const addonServices = siteConfig.pricing.addOns;
 
   const handleTrademarkSubmit = (e: React.FormEvent) => {
     e.preventDefault();
@@ -60,6 +19,7 @@ export default function AddonsPage() {
 
   return (
     <div className="min-h-screen bg-background text-foreground py-16 px-4">
+      <SEOHead seo={siteConfig.seo.pages.addOns} />
       <div className="mx-auto max-w-5xl space-y-12">
         {/* Page Header */}
         <div className="text-center space-y-4 max-w-2xl mx-auto">

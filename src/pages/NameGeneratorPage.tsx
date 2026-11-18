@@ -1,4 +1,6 @@
 import { useState } from "react";
+import SEOHead from "@/components/kit/SEOHead";
+import { siteConfig } from "@/config/site";
 import {
   Sparkles,
   Heart,
@@ -133,6 +135,7 @@ export default function NameGeneratorPage() {
 
   return (
     <>
+      <SEOHead seo={siteConfig.seo.pages.nameGenerator} />
       {/* 1. Hero */}
       <div id="generator-hero" data-webild-section="HeroFloatingCard" data-section="hero">
         <HeroFloatingCard

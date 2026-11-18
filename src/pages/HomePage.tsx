@@ -1,3 +1,5 @@
+import SEOHead from "@/components/kit/SEOHead";
+import { siteConfig } from "@/config/site";
 import HeroFloatingCard from "@/components/sections/hero/HeroFloatingCard";
 import ProofStrip from "@/components/sections/proof/ProofStrip";
 import ProblemHurdles from "@/components/sections/problem/ProblemHurdles";
@@ -16,6 +18,14 @@ import LoaderRingCounter from "@/components/loaders/LoaderRingCounter";
 export default function HomePage() {
   return (
     <>
+      <SEOHead
+        seo={siteConfig.seo.pages.home}
+        schema={[
+          siteConfig.schema.ebookProduct,
+          siteConfig.schema.doItWithUsService,
+          siteConfig.schema.faqPage,
+        ]}
+      />
       <LoaderRingCounter brand="Register It Yourself" />
 
       {/* 1. Hero */}

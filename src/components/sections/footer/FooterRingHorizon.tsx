@@ -38,6 +38,7 @@ export default function FooterRingHorizon({
       links: [
         { text: "About & Founder Story", href: "/about" },
         { text: "Dr. Michelle's CAC Journey", href: "/about#founder-story" },
+        { text: "CAC Blog & Tutorials", href: "/blog" },
         { text: "100% Satisfaction Guarantee", href: "/#trust" },
         { text: "Frequently Asked Questions", href: "/#faq" },
       ],
