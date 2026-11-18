@@ -552,24 +552,24 @@ export default function HeroFloatingCard({
 
         <motion.div
           style={reduce ? undefined : { opacity: copyOpacity, y: copyY }}
-          className="pointer-events-none relative z-[10] mx-auto flex h-full w-[var(--container)] flex-col justify-center py-10 lg:py-16"
+          className="pointer-events-none relative z-[10] mx-auto flex h-full w-[var(--container)] flex-col justify-start lg:justify-center pt-20 sm:pt-24 lg:pt-20 pb-8 sm:pb-12"
         >
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
             {/* Left Column: High-Contrast Copy Panel */}
-            <div className="lg:col-span-7 flex flex-col items-start text-left gap-5 lg:gap-6 p-6 sm:p-8 rounded-3xl bg-emerald-950/85 border border-amber-400/35 backdrop-blur-xl shadow-2xl ring-1 ring-white/10">
+            <div className="lg:col-span-7 flex flex-col items-start text-left gap-4 sm:gap-5 lg:gap-6 p-5 sm:p-8 lg:p-9 rounded-3xl bg-emerald-950/90 border border-amber-400/40 backdrop-blur-xl shadow-2xl ring-1 ring-white/15">
               {/* Badge Pill */}
               <BlurReveal show={ready} y={20} duration={0.8} delay={ease(1)}>
-                <div className="inline-flex items-center gap-2.5 rounded-full border border-amber-400/50 bg-emerald-900/90 px-4 py-1.5 text-xs font-bold uppercase tracking-wider text-amber-300 shadow-lg backdrop-blur-md ring-1 ring-amber-400/30">
-                  <span className="relative flex h-2.5 w-2.5">
+                <div className="inline-flex items-center gap-2 max-w-full rounded-full border border-amber-400/50 bg-emerald-900/90 px-3.5 py-1.5 text-[11px] sm:text-xs font-bold uppercase tracking-wider text-amber-300 shadow-lg backdrop-blur-md ring-1 ring-amber-400/30">
+                  <span className="relative flex h-2.5 w-2.5 shrink-0">
                     <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-emerald-400 opacity-75"></span>
                     <span className="relative inline-flex h-2.5 w-2.5 rounded-full bg-emerald-400"></span>
                   </span>
-                  <span>{badgeText}</span>
+                  <span className="truncate sm:whitespace-normal">{badgeText}</span>
                 </div>
               </BlurReveal>
 
               {/* Title & Highlighted Subtitle */}
-              <h1 className="text-balance text-4xl sm:text-5xl lg:text-6xl font-extrabold tracking-tight text-white leading-[1.08] drop-shadow-md">
+              <h1 className="text-balance text-3xl sm:text-5xl lg:text-6xl font-extrabold tracking-tight text-white leading-[1.1] drop-shadow-md">
                 <BlurReveal show={ready} y={24} duration={0.9} delay={ease(2)} className="block">
                   {title}
                 </BlurReveal>
@@ -582,7 +582,7 @@ export default function HeroFloatingCard({
 
               {/* Description */}
               {description && (
-                <BlurReveal as="p" show={ready} y={24} duration={0.9} delay={ease(4)} className="max-w-xl text-balance text-base sm:text-lg text-emerald-100/95 leading-relaxed font-medium drop-shadow-sm">
+                <BlurReveal as="p" show={ready} y={24} duration={0.9} delay={ease(4)} className="max-w-xl text-balance text-sm sm:text-base lg:text-lg text-emerald-100/95 leading-relaxed font-medium drop-shadow-sm">
                   {description}
                 </BlurReveal>
               )}

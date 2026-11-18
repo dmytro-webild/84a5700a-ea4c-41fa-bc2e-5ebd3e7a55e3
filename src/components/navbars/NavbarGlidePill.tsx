@@ -58,15 +58,17 @@ export default function NavbarGlidePill({
 
   return (
     <header className={`fixed inset-x-0 top-0 z-50 text-foreground ${className ?? ""}`}>
-      <div aria-hidden="true" className="pointer-events-none absolute inset-x-0 top-0 h-full bg-[linear-gradient(180deg,color-mix(in_srgb,var(--background)_80%,transparent),transparent)] backdrop-blur-md" />
+      <div aria-hidden="true" className="pointer-events-none absolute inset-x-0 top-0 h-full bg-emerald-950/85 border-b border-amber-400/25 backdrop-blur-xl shadow-lg" />
       <div ref={panelRef} className="relative mx-auto w-[var(--container)]">
-        <div className="grid grid-cols-[1fr_auto] items-center gap-4 py-4 lg:grid-cols-[auto_1fr_auto]">
+        <div className="grid grid-cols-[1fr_auto] items-center gap-4 py-3.5 sm:py-4 lg:grid-cols-[auto_1fr_auto]">
           {/* Logo */}
-          <motion.a {...rise(0)} href="/" className="flex items-center gap-2.5 justify-self-start text-[length:var(--text-body-lg)] font-bold tracking-tight">
-            <div className="flex h-8 w-8 items-center justify-center rounded-lg bg-amber-500 text-black font-extrabold text-sm">
+          <motion.a {...rise(0)} href="/" className="flex items-center gap-2.5 justify-self-start font-bold tracking-tight group">
+            <div className="flex h-8 w-8 shrink-0 items-center justify-center rounded-lg bg-gradient-to-br from-amber-400 to-amber-600 text-emerald-950 font-black text-xs shadow-md group-hover:scale-105 transition-transform">
               RIY
             </div>
-            <p className="whitespace-nowrap text-white font-bold">{brand}</p>
+            <span className="whitespace-nowrap text-white font-extrabold text-sm sm:text-base tracking-tight">
+              {brand}
+            </span>
           </motion.a>
 
           {/* Desktop Navigation */}
