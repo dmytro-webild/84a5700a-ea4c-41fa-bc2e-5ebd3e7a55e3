@@ -66,7 +66,7 @@ export default function HomePage() {
             {
               title: "Pick & reserve your name",
               description: "Search availability on the portal and reserve your exact business name in 3 minutes without common query rejections.",
-              imageSrc: "https://img.b2bpic.net/free-photo/flat-lay-top-view-office-table-desk-workspace-background_1150-6860.jpg",
+              imageSrc: "https://img.b2bpic.net/free-photo/flat-lay-top-view-office-table-desk-workspace-background_1150-6860.jpg?_wi=1",
               imageAlt: "Office table workspace for name search"
             },
             {
@@ -169,7 +169,7 @@ export default function HomePage() {
             {
               title: "Clearer than YouTube",
               description: "Structured step-by-step video lessons updated for current CAC rules. No outdated advice or trial-and-error.",
-              imageSrc: "https://img.b2bpic.net/free-photo/flat-lay-top-view-office-table-desk-workspace-background_1150-6860.jpg",
+              imageSrc: "https://img.b2bpic.net/free-photo/flat-lay-top-view-office-table-desk-workspace-background_1150-6860.jpg?_wi=2",
               imageAlt: "Clear step-by-step guide"
             },
             {
