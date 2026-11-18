@@ -1,12 +1,12 @@
 import { useEffect, useRef, useState } from "react";
-import { motion, useMotionValueEvent, useReducedMotion, useScroll, useTransform } from "motion/react";
+import { motion, useMotionValueEvent, useReducedMotion, useScroll } from "motion/react";
 import * as THREE from "three";
 import { Reflector } from "three/examples/jsm/objects/Reflector.js";
 import { RoomEnvironment } from "three/examples/jsm/environments/RoomEnvironment.js";
 import BlurReveal from "@/components/kit/BlurReveal";
 import DotArrowButton from "@/components/kit/DotArrowButton";
 import { introSignal } from "@/components/kit/introSignal";
-import { sideOf, useCoverNext } from "@/components/kit/sectionNeighbour";
+import { useCoverNext } from "@/components/kit/sectionNeighbour";
 import { HALO_SHAPES, type HaloBuilt, type HaloShapeDef } from "@/components/kit/haloShapes";
 import { ShieldCheck, Zap, Award } from "lucide-react";
 
@@ -66,13 +66,6 @@ export default function HeroFloatingCard({
   const cover = useRef(0);
   useCoverNext(sectionRef);
   const { scrollYProgress: held } = useScroll({ target: sectionRef, offset: ["start start", "end end"] });
-  const haze = useTransform(held, [0, 0.45, 0.9], [0, 0.55, 0.2]);
-  const shade = useTransform(held, [0.25, 1], [0, 1]);
-  const gone = useTransform(held, (p) => (p >= 1 ? "hidden" : "visible"));
-  const sink = useTransform(held, [0, 1], [1, 0.92]);
-  const sinkRound = useTransform(held, [0, 0.4], [0, 28]);
-  const copyOpacity = useTransform(held, [0, 0.35], [1, 0]);
-  const copyY = useTransform(held, [0, 0.35], [0, -40]);
 
   useEffect(() => introSignal.onReveal(() => setReady(true)), []);
 
@@ -83,37 +76,23 @@ export default function HeroFloatingCard({
 
   useEffect(() => {
     const section = sectionRef.current;
-    const after = section ? sideOf(section, "next") : null;
-    after?.style.setProperty("min-height", "100svh");
     section?.closest("main")?.toggleAttribute("data-night-top", (1 - held.get()) * innerHeight > 36);
     return () => {
-      const next = section ? sideOf(section, "next") : null;
-      after?.style.removeProperty("min-height");
-      next?.style.removeProperty("clip-path");
       section?.closest("main")?.style.removeProperty("--sky-on");
       section?.closest("main")?.removeAttribute("data-night-top");
     };
-  }, []);
+  }, [held]);
 
   useMotionValueEvent(held, "change", (p) => {
     const was = cover.current;
     cover.current = p;
     if (was > 0.995 && p <= 0.995) wake.current?.();
     const section = sectionRef.current;
-    const next = section ? sideOf(section, "next") : null;
-    if (!section || !next) return;
+    if (!section) return;
     const done = p >= 1;
     const main = section.closest("main");
     main?.style.setProperty("--sky-on", done ? "1" : "0");
     main?.toggleAttribute("data-night-top", (1 - p) * innerHeight > 36);
-    next.style.backgroundColor = done ? "transparent" : "var(--background)";
-    if (done || p <= 0) {
-      next.style.removeProperty("clip-path");
-      return;
-    }
-    const inset = Math.min(1, (1 - p) / 0.45);
-    const round = Math.min(1, (1 - p) / 0.15);
-    next.style.clipPath = `inset(0 calc(var(--gutter) * ${(inset * 0.7).toFixed(3)}) round calc(var(--gutter) * ${round.toFixed(3)}))`;
   });
 
   useEffect(() => {
@@ -542,104 +521,100 @@ export default function HeroFloatingCard({
   }, []);
 
   return (
-    <section ref={sectionRef} aria-label="Introduction" data-scene data-night className={`relative -mb-[100svh] h-[200svh] text-foreground ${className ?? ""}`}>
-      <motion.div ref={stageRef} style={{ visibility: gone }} className="sticky top-0 h-svh overflow-clip bg-background">
-        <motion.canvas ref={canvasRef} style={reduce ? undefined : { scale: sink, borderRadius: sinkRound }} aria-label={def.alt} className="absolute inset-0 block size-full touch-pan-y" />
+    <section ref={sectionRef} aria-label="Introduction" data-scene data-night className={`relative min-h-[90vh] lg:min-h-screen flex flex-col justify-center overflow-clip bg-background text-foreground py-16 sm:py-20 lg:py-24 ${className ?? ""}`}>
+      <div ref={stageRef} className="absolute inset-0 size-full overflow-clip bg-background">
+        <canvas ref={canvasRef} aria-label={def.alt} className="absolute inset-0 block size-full touch-pan-y" />
         <div aria-hidden="true" className="pointer-events-none absolute inset-x-0 bottom-0 z-[3] h-[38%] bg-[linear-gradient(180deg,transparent_0%,color-mix(in_srgb,var(--water-deep)_75%,transparent)_100%)] lg:h-[30%]" />
-        {!reduce && <motion.div aria-hidden="true" style={{ opacity: haze }} className="pointer-events-none absolute inset-0 z-[5] bg-[linear-gradient(180deg,color-mix(in_srgb,var(--sky-light)_55%,transparent)_0%,color-mix(in_srgb,var(--sky-glow)_45%,var(--sky-low))_55%,var(--sky-low)_100%)]" />}
+        {!reduce && <div aria-hidden="true" className="pointer-events-none absolute inset-0 z-[5] opacity-50 bg-[linear-gradient(180deg,color-mix(in_srgb,var(--sky-light)_55%,transparent)_0%,color-mix(in_srgb,var(--sky-glow)_45%,var(--sky-low))_55%,var(--sky-low)_100%)]" />}
         <div aria-hidden="true" className="pointer-events-none absolute inset-0 z-[4] bg-[radial-gradient(ellipse_75%_75%_at_25%_50%,rgba(4,26,20,0.85)_0%,transparent_100%)]" />
-        <motion.div aria-hidden="true" style={{ opacity: shade }} className="pointer-events-none absolute inset-0 z-[6] bg-background" />
+      </div>
 
-        <motion.div
-          style={reduce ? undefined : { opacity: copyOpacity, y: copyY }}
-          className="pointer-events-none relative z-[10] mx-auto flex h-full w-[var(--container)] flex-col justify-start lg:justify-center pt-20 sm:pt-24 lg:pt-20 pb-8 sm:pb-12"
-        >
-          <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
-            {/* Left Column: High-Contrast Copy Panel */}
-            <div className="lg:col-span-7 flex flex-col items-start text-left gap-4 sm:gap-5 lg:gap-6 p-5 sm:p-8 lg:p-9 rounded-3xl bg-emerald-950/90 border border-amber-400/40 backdrop-blur-xl shadow-2xl ring-1 ring-white/15">
-              {/* Badge Pill */}
-              <BlurReveal show={ready} y={20} duration={0.8} delay={ease(1)}>
-                <div className="inline-flex items-center gap-2 max-w-full rounded-full border border-amber-400/50 bg-emerald-900/90 px-3.5 py-1.5 text-[11px] sm:text-xs font-bold uppercase tracking-wider text-amber-300 shadow-lg backdrop-blur-md ring-1 ring-amber-400/30">
-                  <span className="relative flex h-2.5 w-2.5 shrink-0">
-                    <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-emerald-400 opacity-75"></span>
-                    <span className="relative inline-flex h-2.5 w-2.5 rounded-full bg-emerald-400"></span>
-                  </span>
-                  <span className="truncate sm:whitespace-normal">{badgeText}</span>
-                </div>
+      <div className="pointer-events-none relative z-[10] mx-auto flex h-full w-[var(--container)] flex-col justify-center">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
+          {/* Left Column: High-Contrast Copy Panel */}
+          <div className="lg:col-span-7 flex flex-col items-start text-left gap-4 sm:gap-5 lg:gap-6 p-5 sm:p-8 lg:p-9 rounded-3xl bg-emerald-950/90 border border-amber-400/40 backdrop-blur-xl shadow-2xl ring-1 ring-white/15">
+            {/* Badge Pill */}
+            <BlurReveal show={ready} y={20} duration={0.8} delay={ease(1)}>
+              <div className="inline-flex items-center gap-2 max-w-full rounded-full border border-amber-400/50 bg-emerald-900/90 px-3.5 py-1.5 text-[11px] sm:text-xs font-bold uppercase tracking-wider text-amber-300 shadow-lg backdrop-blur-md ring-1 ring-amber-400/30">
+                <span className="relative flex h-2.5 w-2.5 shrink-0">
+                  <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-emerald-400 opacity-75"></span>
+                  <span className="relative inline-flex h-2.5 w-2.5 rounded-full bg-emerald-400"></span>
+                </span>
+                <span className="truncate sm:whitespace-normal">{badgeText}</span>
+              </div>
+            </BlurReveal>
+
+            {/* Title & Highlighted Subtitle */}
+            <h1 className="text-balance text-3xl sm:text-5xl lg:text-6xl font-extrabold tracking-tight text-white leading-[1.1] drop-shadow-md">
+              <BlurReveal show={ready} y={24} duration={0.9} delay={ease(2)} className="block">
+                {title}
               </BlurReveal>
-
-              {/* Title & Highlighted Subtitle */}
-              <h1 className="text-balance text-3xl sm:text-5xl lg:text-6xl font-extrabold tracking-tight text-white leading-[1.1] drop-shadow-md">
-                <BlurReveal show={ready} y={24} duration={0.9} delay={ease(2)} className="block">
-                  {title}
-                </BlurReveal>
-                {titleMuted && (
-                  <BlurReveal show={ready} y={24} duration={0.9} delay={ease(3)} className="block mt-1 text-amber-300 font-extrabold drop-shadow-md">
-                    {titleMuted}
-                  </BlurReveal>
-                )}
-              </h1>
-
-              {/* Description */}
-              {description && (
-                <BlurReveal as="p" show={ready} y={24} duration={0.9} delay={ease(4)} className="max-w-xl text-balance text-sm sm:text-base lg:text-lg text-emerald-100/95 leading-relaxed font-medium drop-shadow-sm">
-                  {description}
+              {titleMuted && (
+                <BlurReveal show={ready} y={24} duration={0.9} delay={ease(3)} className="block mt-1 text-amber-300 font-extrabold drop-shadow-md">
+                  {titleMuted}
                 </BlurReveal>
               )}
+            </h1>
 
-              {/* Action Buttons */}
-              <div className="pointer-events-auto flex flex-col sm:flex-row items-stretch sm:items-center gap-3.5 w-full sm:w-auto pt-2">
-                {primaryButton && (
-                  <motion.div
-                    initial={reduce ? false : { opacity: 0, y: 24 }}
-                    animate={ready || reduce ? { opacity: 1, y: 0 } : { opacity: 0, y: 24 }}
-                    transition={{ duration: 0.9, ease: EASE, delay: ease(5) }}
-                    className="w-full sm:w-auto"
-                  >
-                    <DotArrowButton text={primaryButton.text} href={primaryButton.href} className="w-full justify-center px-7 py-3.5 text-base font-bold shadow-xl shadow-amber-500/20 bg-[#D4A537] text-[#041F18] hover:bg-[#c49527]" />
-                  </motion.div>
-                )}
-                {secondaryButton && (
-                  <motion.div
-                    initial={reduce ? false : { opacity: 0, y: 24 }}
-                    animate={ready || reduce ? { opacity: 1, y: 0 } : { opacity: 0, y: 24 }}
-                    transition={{ duration: 0.9, ease: EASE, delay: ease(6) }}
-                    className="w-full sm:w-auto"
-                  >
-                    <DotArrowButton text={secondaryButton.text} href={secondaryButton.href} variant="secondary" className="w-full justify-center px-6 py-3.5 text-base font-semibold bg-emerald-900/80 hover:bg-emerald-800 text-white border border-amber-400/40 backdrop-blur-md" />
-                  </motion.div>
-                )}
-              </div>
+            {/* Description */}
+            {description && (
+              <BlurReveal as="p" show={ready} y={24} duration={0.9} delay={ease(4)} className="max-w-xl text-balance text-sm sm:text-base lg:text-lg text-emerald-100/95 leading-relaxed font-medium drop-shadow-sm">
+                {description}
+              </BlurReveal>
+            )}
 
-              {/* Trust Badges */}
-              <motion.div
-                initial={reduce ? false : { opacity: 0, y: 24 }}
-                animate={ready || reduce ? { opacity: 1, y: 0 } : { opacity: 0, y: 24 }}
-                transition={{ duration: 0.9, ease: EASE, delay: ease(7) }}
-                className="pointer-events-auto grid grid-cols-1 sm:grid-cols-3 gap-2.5 sm:gap-3 w-full max-w-2xl pt-4 border-t border-emerald-800/60"
-              >
-                {items.map((badge) => {
-                  const Icon = badge.Icon;
-                  return (
-                    <div key={badge.title} className="flex items-center gap-3 rounded-xl border border-emerald-700/60 bg-emerald-900/80 p-2.5 sm:p-3 backdrop-blur-md shadow-md transition-all hover:border-amber-400/60 hover:bg-emerald-900/95">
-                      <div className="flex h-9 w-9 shrink-0 items-center justify-center rounded-lg bg-amber-400/20 text-amber-300 border border-amber-400/30">
-                        <Icon className="size-5" />
-                      </div>
-                      <div className="min-w-0">
-                        <div className="text-xs font-bold text-white truncate">{badge.title}</div>
-                        <div className="text-[11px] text-emerald-200 truncate">{badge.subtitle}</div>
-                      </div>
-                    </div>
-                  );
-                })}
-              </motion.div>
+            {/* Action Buttons */}
+            <div className="pointer-events-auto flex flex-col sm:flex-row items-stretch sm:items-center gap-3.5 w-full sm:w-auto pt-2">
+              {primaryButton && (
+                <motion.div
+                  initial={reduce ? false : { opacity: 0, y: 24 }}
+                  animate={ready || reduce ? { opacity: 1, y: 0 } : { opacity: 0, y: 24 }}
+                  transition={{ duration: 0.9, ease: EASE, delay: ease(5) }}
+                  className="w-full sm:w-auto"
+                >
+                  <DotArrowButton text={primaryButton.text} href={primaryButton.href} className="w-full justify-center px-7 py-3.5 text-base font-bold shadow-xl shadow-amber-500/20 bg-[#D4A537] text-[#041F18] hover:bg-[#c49527]" />
+                </motion.div>
+              )}
+              {secondaryButton && (
+                <motion.div
+                  initial={reduce ? false : { opacity: 0, y: 24 }}
+                  animate={ready || reduce ? { opacity: 1, y: 0 } : { opacity: 0, y: 24 }}
+                  transition={{ duration: 0.9, ease: EASE, delay: ease(6) }}
+                  className="w-full sm:w-auto"
+                >
+                  <DotArrowButton text={secondaryButton.text} href={secondaryButton.href} variant="secondary" className="w-full justify-center px-6 py-3.5 text-base font-semibold bg-emerald-900/80 hover:bg-emerald-800 text-white border border-amber-400/40 backdrop-blur-md" />
+                </motion.div>
+              )}
             </div>
 
-            {/* Right Column Spacer for 3D Floating Glass Object */}
-            <div className="hidden lg:block lg:col-span-5 pointer-events-none min-h-[320px]" />
+            {/* Trust Badges */}
+            <motion.div
+              initial={reduce ? false : { opacity: 0, y: 24 }}
+              animate={ready || reduce ? { opacity: 1, y: 0 } : { opacity: 0, y: 24 }}
+              transition={{ duration: 0.9, ease: EASE, delay: ease(7) }}
+              className="pointer-events-auto grid grid-cols-1 sm:grid-cols-3 gap-2.5 sm:gap-3 w-full max-w-2xl pt-4 border-t border-emerald-800/60"
+            >
+              {items.map((badge) => {
+                const Icon = badge.Icon;
+                return (
+                  <div key={badge.title} className="flex items-center gap-3 rounded-xl border border-emerald-700/60 bg-emerald-900/80 p-2.5 sm:p-3 backdrop-blur-md shadow-md transition-all hover:border-amber-400/60 hover:bg-emerald-900/95">
+                    <div className="flex h-9 w-9 shrink-0 items-center justify-center rounded-lg bg-amber-400/20 text-amber-300 border border-amber-400/30">
+                      <Icon className="size-5" />
+                    </div>
+                    <div className="min-w-0">
+                      <div className="text-xs font-bold text-white truncate">{badge.title}</div>
+                      <div className="text-[11px] text-emerald-200 truncate">{badge.subtitle}</div>
+                    </div>
+                  </div>
+                );
+              })}
+            </motion.div>
           </div>
-        </motion.div>
-      </motion.div>
+
+          {/* Right Column Spacer for 3D Floating Glass Object */}
+          <div className="hidden lg:block lg:col-span-5 pointer-events-none min-h-[320px]" />
+        </div>
+      </div>
     </section>
   );
 }
