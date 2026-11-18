@@ -1,0 +1,10 @@
+src/components/Layout.tsx
+src/components/sections/about/AboutRingStatement.tsx
+src/components/sections/contact/ContactRingForm.tsx
+src/components/sections/faq/FaqRippleAccordion.tsx
+src/components/sections/features/ProcessRingSteps.tsx
+src/components/sections/footer/FooterRingHorizon.tsx
+src/components/sections/hero/HeroFloatingCard.tsx
+src/components/sections/pricing/PricingRingPlans.tsx
+src/components/sections/testimonial/TestimonialRingQuotes.tsx
+src/pages/HomePage.tsx
