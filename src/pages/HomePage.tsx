@@ -1,6 +1,7 @@
 import HeroFloatingCard from "@/components/sections/hero/HeroFloatingCard";
 import AboutRingStatement from "@/components/sections/about/AboutRingStatement";
 import ProcessRingSteps from "@/components/sections/features/ProcessRingSteps";
+import TrustRingGuarantee from "@/components/sections/trust/TrustRingGuarantee";
 import PricingRingPlans from "@/components/sections/pricing/PricingRingPlans";
 import TestimonialRingQuotes from "@/components/sections/testimonial/TestimonialRingQuotes";
 import FaqRippleAccordion from "@/components/sections/faq/FaqRippleAccordion";
@@ -81,6 +82,60 @@ export default function HomePage() {
               imageSrc: "https://img.b2bpic.net/free-photo/workspace-with-office-supplies-laptop-notebook-stationery_23-2151968886.jpg",
               imageAlt: "Workspace with office supplies: laptop, notebook, and stationery"
             }
+          ]}
+        />
+      </div>
+
+      <div id="trust" data-webild-section="TrustRingGuarantee" data-webild-section-id="TrustRingGuarantee-1" data-section="trust">
+        <TrustRingGuarantee
+          tag="Satisfaction Guarantee"
+          title="Register with 100% confidence."
+          titleDim="We back your DIY filing."
+          description="Filing your CAC business registration yourself shouldn't feel risky. With our approval guarantee and direct support commitment, you get the speed of DIY with total peace of mind."
+          guaranteeTitle="100% Approval Guarantee & Human Support Commitment"
+          guaranteeBadge="Zero-Risk Filing Protection"
+          guaranteeDescription="If your business registration faces queries or rejections due to guidance error in our course, our team will personally assist you until approved — or refund 100% of your RIY purchase."
+          guaranteePoints={[
+            "Pre-submission document check to prevent common CAC portal mistakes",
+            "Direct WhatsApp & email access to experienced Nigerian filing guides",
+            "Full refund guarantee if our instructions fail to guide your registration",
+            "Always updated to match the latest Corporate Affairs Commission rules"
+          ]}
+          pillars={[
+            {
+              icon: "shield",
+              title: "100% CAC Approval Guarantee",
+              description: "Follow our verified step-by-step videos. If CAC raises a query based on our guides, we review and fix it for free or issue a full refund."
+            },
+            {
+              icon: "support",
+              title: "Human Support Commitment",
+              description: "You're never stranded. Our team of Nigerian business registration guides is ready on WhatsApp and email to review your details."
+            },
+            {
+              icon: "savings",
+              title: "Zero Hidden Agent Fees",
+              description: "Save ₦80,000+ compared to traditional registration agents. Pay only for clear guidance and official portal fees directly."
+            },
+            {
+              icon: "speed",
+              title: "3-Minute Fast Approval",
+              description: "Learn the exact method founder Michelle used to get business name approval within 3 minutes of payment on the official portal."
+            }
+          ]}
+          primaryButton={{
+            text: "Get Started Risk-Free",
+            href: "#pricing"
+          }}
+          secondaryButton={{
+            text: "Have Questions? Contact Us",
+            href: "#contact"
+          }}
+          stats={[
+            { value: "100%", label: "Approval Guarantee" },
+            { value: "₦80k+", label: "Avg. Agent Fee Saved" },
+            { value: "3 Mins", label: "Fastest Approval Time" },
+            { value: "100%", label: "Dedicated Human Support" }
           ]}
         />
       </div>
