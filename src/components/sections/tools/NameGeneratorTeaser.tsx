@@ -40,7 +40,7 @@ export default function NameGeneratorTeaser({ className }: { className?: string 
   useEffect(() => {
     const handleUpdate = (e: Event) => {
       const customEvent = e as CustomEvent<string>;
-      if (customEvent.detail) {
+      if (customEvent.detail !== undefined) {
         setInputName(customEvent.detail);
       }
     };
@@ -53,9 +53,7 @@ export default function NameGeneratorTeaser({ className }: { className?: string 
 
   const handleInputChange = (val: string) => {
     setInputName(val);
-    if (val.trim().length > 2) {
-      saveBusinessName(val.trim());
-    }
+    saveBusinessName(val);
   };
 
   const words = inputName.trim().split(/\s+/).filter(Boolean);

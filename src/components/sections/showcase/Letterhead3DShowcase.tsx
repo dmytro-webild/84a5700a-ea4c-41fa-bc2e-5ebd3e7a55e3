@@ -22,7 +22,7 @@ export default function Letterhead3DShowcase({ className }: { className?: string
   useEffect(() => {
     const handleUpdate = (e: Event) => {
       const customEvent = e as CustomEvent<string>;
-      if (customEvent.detail) {
+      if (customEvent.detail !== undefined) {
         setBusinessName(customEvent.detail);
       } else {
         setBusinessName(getSavedBusinessName());
