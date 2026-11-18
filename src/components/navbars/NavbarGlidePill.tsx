@@ -17,14 +17,16 @@ type NavbarGlidePillProps = {
 const EASE: [number, number, number, number] = [0.22, 1, 0.36, 1];
 
 export default function NavbarGlidePill({
-  brand = "Halo",
+  brand = "RIY",
   navItems = [
-    { name: "Features", href: "#features" },
-    { name: "Plans", href: "#plans" },
-    { name: "Pricing", href: "#pricing" },
-    { name: "Support", href: "#faq" },
+    { name: "Home", href: "/" },
+    { name: "Ebook Guide", href: "/ebook" },
+    { name: "Do It With Us", href: "/do-it-with-us" },
+    { name: "Name Generator", href: "/name-generator" },
+    { name: "Add-ons", href: "/add-ons" },
+    { name: "About", href: "/about" },
   ],
-  primaryButton = { text: "Get started", href: "#start-now" },
+  primaryButton = { text: "Get Started", href: "/ebook" },
   secondaryButton,
   className,
 }: NavbarGlidePillProps) {
@@ -56,25 +58,28 @@ export default function NavbarGlidePill({
 
   return (
     <header className={`fixed inset-x-0 top-0 z-50 text-foreground ${className ?? ""}`}>
-      <div aria-hidden="true" className="pointer-events-none absolute inset-x-0 top-0 h-full bg-[linear-gradient(180deg,color-mix(in_srgb,var(--background)_55%,transparent),transparent)]" />
+      <div aria-hidden="true" className="pointer-events-none absolute inset-x-0 top-0 h-full bg-[linear-gradient(180deg,color-mix(in_srgb,var(--background)_80%,transparent),transparent)] backdrop-blur-md" />
       <div ref={panelRef} className="relative mx-auto w-[var(--container)]">
-        <div className="grid grid-cols-[1fr_auto] items-center gap-4 py-4 min-[94.5rem]:grid-cols-[1fr_auto_1fr]">
-          <motion.a {...rise(0)} href="#home" className="flex items-center gap-2.5 justify-self-start text-[length:var(--text-body-lg)] font-medium tracking-[-0.02em]">
-            <svg viewBox="0 0 20 20" aria-hidden="true" className="size-6">
-              <path d="M16.2 6.4A7 7 0 1 0 17 10" fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" />
-            </svg>
-            <p className="whitespace-nowrap">{brand}</p>
+        <div className="grid grid-cols-[1fr_auto] items-center gap-4 py-4 lg:grid-cols-[auto_1fr_auto]">
+          {/* Logo */}
+          <motion.a {...rise(0)} href="/" className="flex items-center gap-2.5 justify-self-start text-[length:var(--text-body-lg)] font-bold tracking-tight">
+            <div className="flex h-8 w-8 items-center justify-center rounded-lg bg-amber-500 text-black font-extrabold text-sm">
+              RIY
+            </div>
+            <p className="whitespace-nowrap text-white font-bold">{brand}</p>
           </motion.a>
+
+          {/* Desktop Navigation */}
           <motion.nav
             {...rise(1)}
             aria-label="Main"
             onPointerLeave={hidePill}
-            className="relative hidden h-[3.125rem] items-center rounded-full bg-[color-mix(in_srgb,var(--glass-ink,white)_12%,transparent)] px-1 backdrop-blur-[14px] min-[94.5rem]:flex"
+            className="relative hidden h-[3.125rem] items-center justify-self-center rounded-full bg-zinc-900/80 border border-zinc-800 px-2 backdrop-blur-md lg:flex"
           >
             <div
               ref={pillRef}
               aria-hidden="true"
-              className="absolute bottom-1 left-0 top-1 w-0 rounded-full bg-[color-mix(in_srgb,var(--glass-ink,white)_12%,transparent)] opacity-0 transition-[transform,width,opacity] duration-[450ms,450ms,300ms] ease-[var(--ease-out)]"
+              className="absolute bottom-1 left-0 top-1 w-0 rounded-full bg-amber-500/20 opacity-0 transition-[transform,width,opacity] duration-[450ms,450ms,300ms] ease-[var(--ease-out)]"
             />
             {navItems.map((item) => (
               <a
@@ -83,38 +88,79 @@ export default function NavbarGlidePill({
                 onPointerEnter={(e) => glide(e.currentTarget)}
                 onFocus={(e) => glide(e.currentTarget)}
                 onBlur={hidePill}
-                className="relative z-[1] whitespace-nowrap px-4 text-[length:var(--text-body)] tracking-[-0.01em] text-foreground/85 transition-colors duration-300 hover:text-foreground focus-visible:text-foreground focus-visible:outline-none"
+                className="relative z-[1] whitespace-nowrap px-3.5 text-xs font-medium tracking-tight text-zinc-300 transition-colors duration-300 hover:text-amber-400 focus-visible:text-amber-400 focus-visible:outline-none"
               >
                 {item.name}
               </a>
             ))}
           </motion.nav>
+
+          {/* Header Buttons */}
           <motion.div {...rise(2)} className="flex items-center gap-3 justify-self-end">
-            {secondaryButton && <DotArrowButton text={secondaryButton.text} href={secondaryButton.href} variant="secondary" className="hidden min-[94.5rem]:inline-flex" />}
-            <DotArrowButton text={primaryButton.text} href={primaryButton.href} className="hidden lg:inline-flex" />
+            {secondaryButton && (
+              <DotArrowButton
+                text={secondaryButton.text}
+                href={secondaryButton.href}
+                variant="secondary"
+                className="hidden lg:inline-flex text-xs"
+              />
+            )}
+            {/* Gold Get Started Button */}
+            <a
+              href={primaryButton.href}
+              className="hidden lg:inline-flex items-center justify-center gap-2 rounded-full bg-gradient-to-r from-amber-500 to-yellow-400 px-5 py-2.5 text-xs font-bold text-black shadow-lg shadow-amber-500/20 hover:brightness-110 active:scale-95 transition-all"
+            >
+              <span>{primaryButton.text}</span>
+              <svg viewBox="0 0 14 14" className="w-3.5 h-3.5 fill-none stroke-current stroke-2">
+                <path d="M2.5 7h9M7.5 3l4 4-4 4" strokeLinecap="round" strokeLinejoin="round" />
+              </svg>
+            </a>
+
+            {/* Mobile Hamburger Button */}
             <button
               type="button"
               aria-label={open ? "Close menu" : "Open menu"}
               aria-expanded={open}
               onClick={() => setOpen((v) => !v)}
-              className="relative flex size-[3.125rem] items-center justify-center rounded-full bg-[color-mix(in_srgb,var(--glass-ink,white)_12%,transparent)] backdrop-blur-[14px] min-[94.5rem]:hidden"
+              className="relative flex size-[3.125rem] items-center justify-center rounded-full bg-zinc-900 border border-zinc-800 backdrop-blur-md lg:hidden"
             >
               <div aria-hidden="true" className={`absolute h-px w-3.5 bg-current transition-transform duration-300 ${open ? "rotate-45" : "-translate-y-[3px]"}`} />
               <div aria-hidden="true" className={`absolute h-px w-3.5 bg-current transition-transform duration-300 ${open ? "-rotate-45" : "translate-y-[3px]"}`} />
             </button>
           </motion.div>
         </div>
-        <div className={`grid transition-[grid-template-rows] duration-500 ease-[var(--ease-out)] lg:ml-auto lg:w-[22rem] min-[94.5rem]:hidden ${open ? "grid-rows-[1fr]" : "grid-rows-[0fr]"}`} inert={!open}>
+
+        {/* Mobile Dropdown Menu */}
+        <div className={`grid transition-[grid-template-rows] duration-500 ease-[var(--ease-out)] lg:hidden ${open ? "grid-rows-[1fr]" : "grid-rows-[0fr]"}`} inert={!open}>
           <div className="overflow-hidden">
-            <nav aria-label="Mobile" className="kit-card flex flex-col p-[1.375rem] lg:p-[1.125rem]">
+            <nav aria-label="Mobile" className="flex flex-col rounded-2xl bg-zinc-900 border border-zinc-800 p-5 mt-2 shadow-2xl">
               {navItems.map((item) => (
-                <a key={item.href + item.name} href={item.href} onClick={() => setOpen(false)} className="border-b border-border py-3.5 text-[length:var(--text-h3)] tracking-[-0.035em] lg:py-3 lg:text-[length:var(--text-body-lg)] lg:tracking-[-0.02em]">
+                <a
+                  key={item.href + item.name}
+                  href={item.href}
+                  onClick={() => setOpen(false)}
+                  className="border-b border-zinc-800/60 py-3 text-sm font-medium text-zinc-200 hover:text-amber-400"
+                >
                   {item.name}
                 </a>
               ))}
-              <div className={`mt-5 flex gap-3 ${secondaryButton ? "" : "lg:hidden"}`}>
-                {secondaryButton && <DotArrowButton text={secondaryButton.text} href={secondaryButton.href} variant="secondary" onClick={() => setOpen(false)} className="flex-1" />}
-                <DotArrowButton text={primaryButton.text} href={primaryButton.href} onClick={() => setOpen(false)} className="flex-1 lg:hidden" />
+              <div className="mt-5 flex flex-col gap-2">
+                <a
+                  href={primaryButton.href}
+                  onClick={() => setOpen(false)}
+                  className="w-full rounded-xl bg-gradient-to-r from-amber-500 to-yellow-400 py-3 text-center text-xs font-bold text-black shadow-lg shadow-amber-500/20"
+                >
+                  {primaryButton.text} — ₦10,000
+                </a>
+                {secondaryButton && (
+                  <a
+                    href={secondaryButton.href}
+                    onClick={() => setOpen(false)}
+                    className="w-full rounded-xl border border-zinc-700 bg-zinc-800 py-3 text-center text-xs font-medium text-zinc-300"
+                  >
+                    {secondaryButton.text}
+                  </a>
+                )}
               </div>
             </nav>
           </div>
