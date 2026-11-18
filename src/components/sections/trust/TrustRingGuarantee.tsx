@@ -116,7 +116,7 @@ export default function TrustRingGuarantee({
     }
   ],
   primaryButton = {
-    text: "Get Started Risk-Free",
+    text: "Get Your CAC Certificate Risk-Free",
     href: "#pricing"
   },
   secondaryButton = {

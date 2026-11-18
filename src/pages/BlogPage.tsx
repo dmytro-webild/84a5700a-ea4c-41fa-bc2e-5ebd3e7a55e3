@@ -171,15 +171,15 @@ export default function BlogPage() {
           <h2 className="text-xl md:text-2xl font-bold text-white">
             Ready to Register Your Business with CAC This Week?
           </h2>
-          <p className="text-xs md:text-sm text-zinc-300 max-w-xl mx-auto">
+          <p className="text-sm md:text-base text-zinc-100 max-w-xl mx-auto leading-relaxed">
             Skip agent markups and confusing portal queries. Download our complete step-by-step guide for ₦10,000 or let us walk you through live on screen for ₦25,000.
           </p>
           <div className="flex flex-wrap items-center justify-center gap-4 pt-2">
             <Link
               to="/ebook"
-              className="rounded-xl bg-amber-500 px-6 py-3 text-xs font-bold text-black hover:bg-amber-400 transition-all focus-visible:ring-2 focus-visible:ring-amber-400 focus-visible:outline-none"
+              className="rounded-xl bg-amber-500 px-6 py-3.5 text-sm font-bold text-black hover:bg-amber-400 transition-all focus-visible:ring-2 focus-visible:ring-amber-400 focus-visible:outline-none"
             >
-              Get Ebook Guide — ₦10,000
+              Get Your CAC Certificate — ₦10,000
             </Link>
             <Link
               to="/do-it-with-us"

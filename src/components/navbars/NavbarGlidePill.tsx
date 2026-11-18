@@ -26,7 +26,7 @@ export default function NavbarGlidePill({
     { name: "Add-ons", href: "/add-ons" },
     { name: "About", href: "/about" },
   ],
-  primaryButton = { text: "Get Started", href: "/ebook" },
+  primaryButton = { text: "Get Your CAC Certificate", href: "/ebook" },
   secondaryButton,
   className,
 }: NavbarGlidePillProps) {
@@ -88,7 +88,7 @@ export default function NavbarGlidePill({
                 onPointerEnter={(e) => glide(e.currentTarget)}
                 onFocus={(e) => glide(e.currentTarget)}
                 onBlur={hidePill}
-                className="relative z-[1] whitespace-nowrap px-3.5 text-xs font-medium tracking-tight text-zinc-300 transition-colors duration-300 hover:text-amber-400 focus-visible:text-amber-400 focus-visible:outline-none"
+                className="relative z-[1] whitespace-nowrap px-4 text-sm font-semibold tracking-tight text-zinc-100 transition-colors duration-300 hover:text-amber-400 focus-visible:text-amber-400 focus-visible:outline-none"
               >
                 {item.name}
               </a>
@@ -108,7 +108,7 @@ export default function NavbarGlidePill({
             {/* Gold Get Started Button */}
             <a
               href={primaryButton.href}
-              className="hidden lg:inline-flex items-center justify-center gap-2 rounded-full bg-gradient-to-r from-amber-500 to-yellow-400 px-5 py-2.5 text-xs font-bold text-black shadow-lg shadow-amber-500/20 hover:brightness-110 active:scale-95 transition-all"
+              className="hidden lg:inline-flex items-center justify-center gap-2 rounded-full bg-gradient-to-r from-amber-500 to-yellow-400 px-5 py-2.5 text-sm font-bold text-black shadow-lg shadow-amber-500/20 hover:brightness-110 active:scale-95 transition-all"
             >
               <span>{primaryButton.text}</span>
               <svg viewBox="0 0 14 14" className="w-3.5 h-3.5 fill-none stroke-current stroke-2">

@@ -137,7 +137,7 @@ export default function EbookPage() {
           titleMuted="Ebook & Action Guide"
           description="The step-by-step screen walkthrough that takes you from business idea to official CAC certificate, without paying agent markups. Instant PDF download + full bonus kit."
           primaryButton={{
-            text: `Get Instant Access — ${siteConfig.pricing.ebook.price}`,
+            text: "Get Your CAC Certificate — ₦10,000",
             href: "#pricing-card",
           }}
           secondaryButton={{
@@ -333,10 +333,10 @@ export default function EbookPage() {
                   <p className="text-xs text-muted-foreground">Instant download after checkout</p>
                   <button
                     onClick={() => setShowCheckout(true)}
-                    className="btn-primary w-full justify-center flex items-center gap-2 py-3"
+                    className="btn-primary w-full justify-center flex items-center gap-2 py-3 font-bold"
                   >
                     <Download className="size-4" />
-                    <span>Get Instant Access</span>
+                    <span>Get Your CAC Certificate</span>
                   </button>
                   <div className="flex items-center justify-center gap-1.5 text-xs text-muted-foreground">
                     <ShieldCheck className="size-4 text-emerald-400" /> Secure Checkout

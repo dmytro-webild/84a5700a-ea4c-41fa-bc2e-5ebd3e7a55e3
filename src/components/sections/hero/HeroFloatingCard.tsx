@@ -37,7 +37,7 @@ export default function HeroFloatingCard({
   title = "All you need, nothing you don't",
   titleMuted,
   description = "One calm place to start, grow and stay.",
-  primaryButton = { text: "Get started", href: "#" },
+  primaryButton = { text: "Get Your CAC Certificate", href: "#pricing" },
   secondaryButton = { text: "How it works", href: "#" },
   className,
 }: HeroFloatingCardProps) {
@@ -545,7 +545,7 @@ export default function HeroFloatingCard({
                 {title}
               </BlurReveal>
               {titleMuted && (
-                <BlurReveal show={ready} y={26} duration={1} delay={ease(4)} className="block text-foreground/50">
+                <BlurReveal show={ready} y={26} duration={1} delay={ease(4)} className="block text-foreground/85 font-medium">
                   {titleMuted}
                 </BlurReveal>
               )}
