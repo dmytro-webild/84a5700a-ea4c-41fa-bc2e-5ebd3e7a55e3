@@ -22,7 +22,7 @@ export default function Layout() {
     <div className="relative isolate min-h-svh flex flex-col bg-background text-foreground" data-button="default" data-card="glass" data-pattern="sky">
       <header data-webild-section="Header">
         <NavbarGlidePill
-          brand={siteConfig.shortName}
+          brand={siteConfig.name}
           navItems={[
             {
               name: "Home",
