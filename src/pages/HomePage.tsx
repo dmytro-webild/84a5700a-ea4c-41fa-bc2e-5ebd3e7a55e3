@@ -32,9 +32,10 @@ export default function HomePage() {
       <div id="home" data-webild-section="HeroFloatingCard" data-webild-section-id="HeroFloatingCard-1" data-section="home">
         <HeroFloatingCard
           shape="twist"
+          badgeText="Official CAC Govt Direct Registration Guide"
           title="Register your business with CAC."
-          titleMuted="Yourself. This week."
-          description="Skip the agent fees. Our step-by-step guide, and a real person on call if you want one, takes you from business idea to CAC certificate, first time."
+          titleMuted="Yourself. Fast & Hassle-Free."
+          description="Skip expensive lawyer & agent fees. Our step-by-step walkthrough and live 1-on-1 human support take you from business name approval to your official CAC certificate, guaranteed."
           primaryButton={{
             text: "Get Your CAC Certificate — ₦10,000",
             href: "#pricing"
