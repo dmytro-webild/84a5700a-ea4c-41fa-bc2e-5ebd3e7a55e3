@@ -24,7 +24,7 @@ const ebookModules: ModuleItem[] = [
   {
     number: "03",
     title: "Screen-by-Screen Form Filing Walkthrough",
-    description: "Detailed video & screenshot tutorials for Business Names (BN) and Limited Companies (LTD).",
+    description: "Detailed step-by-step PDF & screenshot tutorials for Business Names (BN) and Limited Companies (LTD).",
     highlights: ["Objects of business templates", "Proprietor & Director allocation", "Share capital structure guidance"],
   },
   {

@@ -364,7 +364,7 @@ export const siteConfig = {
           name: "What is the difference between Do It Yourself and Do It With Us?",
           acceptedAnswer: {
             "@type": "Answer",
-            text: "Do It Yourself (₦10,000) gives you the instant download ebook and video templates to register at your own pace. Do It With Us (₦25,000) includes the ebook plus a live 1-on-1 screen share session with our team to complete your application together, plus 2 custom letterheads.",
+            text: "Do It Yourself (₦10,000) gives you the single, comprehensive PDF ebook guide and templates to register at your own pace (no video guide is included or available). Do It With Us (₦25,000, or a ₦15,000 live upgrade for existing ebook owners) includes the PDF guide plus a live 1-on-1 screen share session with a guide to complete your application together, plus 2 custom letterheads.",
           },
         },
       ],
@@ -480,7 +480,7 @@ export const siteConfig = {
           },
         ],
         conclusion:
-          "Want a screen-by-screen visual guide with video demonstrations for every click? Download the complete RIY Ebook Guide for just ₦10,000 today.",
+          "Want a screen-by-screen visual guide with clear step-by-step PDF instructions for every click? Download the single RIY Ebook Guide for just ₦10,000 today, or pay ₦15,000 for a live 1-on-1 guide session if you need direct support.",
       },
     },
     {

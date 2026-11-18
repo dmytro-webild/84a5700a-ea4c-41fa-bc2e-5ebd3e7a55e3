@@ -17,7 +17,7 @@ const CORE_VALUES = [
   {
     icon: Target,
     title: "Empowerment Over Dependency",
-    description: "We give you the exact knowledge and video walkthroughs to register independently now and handle post-registration compliance for life.",
+    description: "We give you the exact knowledge and single PDF walkthrough guide to register independently now, with optional ₦15k live guide support if needed.",
   },
   {
     icon: Zap,

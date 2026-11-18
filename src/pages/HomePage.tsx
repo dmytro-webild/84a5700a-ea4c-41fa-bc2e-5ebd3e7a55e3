@@ -82,7 +82,7 @@ export default function HomePage() {
             },
             {
               title: "Follow the screen guide",
-              description: "Walk through every portal section using our step-by-step video lessons and direct personal review.",
+              description: "Walk through every portal section using our step-by-step PDF guide and direct personal review.",
               imageSrc: "https://img.b2bpic.net/free-photo/knolling-concept-with-sticky-notes-accessories-green-shades_23-2148362185.jpg",
               imageAlt: "Screen-by-screen filing guide notes"
             },
@@ -179,7 +179,7 @@ export default function HomePage() {
             },
             {
               title: "Clearer than YouTube",
-              description: "Structured step-by-step video lessons updated for current CAC rules. No outdated advice or trial-and-error.",
+              description: "Structured step-by-step PDF guide updated for current CAC rules. No video guides needed or outdated advice.",
               imageSrc: "https://img.b2bpic.net/free-photo/flat-lay-top-view-office-table-desk-workspace-background_1150-6860.jpg?_wi=2",
               imageAlt: "Clear step-by-step guide"
             },
@@ -206,7 +206,7 @@ export default function HomePage() {
           titleDim="who skipped agent fees"
           items={[
             {
-              quote: "I saved over ₦80,000 in agent fees by following the RIY guide. The step-by-step videos made navigating the CAC portal completely stress-free.",
+              quote: "I saved over ₦80,000 in agent fees by following the RIY guide. The step-by-step PDF guide made navigating the CAC portal completely stress-free.",
               name: "Chidi E.",
               role: "Tech Founder, Lagos",
               imageSrc: "https://img.b2bpic.net/free-photo/handsome-african-american-man-with-beard-turn-face-camera-smiling-confident-standing-pink-background_1258-77841.jpg",
@@ -255,7 +255,7 @@ export default function HomePage() {
             },
             {
               title: "What is included in the ₦10,000 DIY Guide vs ₦25,000 Do It With Us?",
-              description: "The ₦10,000 DIY option gives you instant access to the complete Register It Yourself ebook with screen-by-screen video tutorials, templates, and post-registration guides. The ₦25,000 Do It With Us plan adds a live 1-on-1 Zoom session where we complete the filing together, plus 2 custom corporate letterhead designs delivered 2–3 days after approval."
+              description: "The ₦10,000 DIY option gives you instant access to our single, comprehensive PDF ebook guide with screen-by-screen CAC tutorials, templates, and post-registration roadmaps (note: there is only one PDF guide available and no video guide). If you require additional support beyond the PDF guide, you can pay ₦15,000 for a live 1-on-1 guide session (or ₦25,000 full package including 2 custom corporate letterhead designs)."
             },
             {
               title: "Can I upgrade from the ₦10,000 ebook to Do It With Us later?",

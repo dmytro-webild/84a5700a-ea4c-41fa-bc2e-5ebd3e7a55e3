@@ -108,7 +108,7 @@ export default function ProblemHurdles({
                 The trusted middle path: Clear, fast, and 100% agent-free.
               </h3>
               <p className="text-[length:var(--text-body)] text-muted-foreground mt-2 max-w-2xl">
-                We bridge the gap with step-by-step video walkthroughs, proven templates, and direct personal review so you never get stuck or queried.
+                We bridge the gap with a single step-by-step PDF guide, proven templates, and optional ₦15,000 live guide support so you never get stuck or queried.
               </p>
             </div>
             <a
