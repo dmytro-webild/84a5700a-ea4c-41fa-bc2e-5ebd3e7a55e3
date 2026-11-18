@@ -41,7 +41,7 @@ export default function HeroFloatingCard({
   title = "Register your business with CAC.",
   titleMuted = "Yourself. Fast & Hassle-Free.",
   description = "Skip expensive agent fees. Our step-by-step guide and 1-on-1 human support take you from name approval to official CAC certificate, guaranteed.",
-  primaryButton = { text: "Get Your CAC Certificate — ₦10,000", href: "#pricing" },
+  primaryButton = { text: "Get the Guide — ₦10,000", href: "#pricing" },
   secondaryButton = { text: "Do It With Us — ₦25,000", href: "#pricing" },
   trustBadges,
   className,
@@ -547,6 +547,7 @@ export default function HeroFloatingCard({
         <motion.canvas ref={canvasRef} style={reduce ? undefined : { scale: sink, borderRadius: sinkRound }} aria-label={def.alt} className="absolute inset-0 block size-full touch-pan-y" />
         <div aria-hidden="true" className="pointer-events-none absolute inset-x-0 bottom-0 z-[3] h-[38%] bg-[linear-gradient(180deg,transparent_0%,color-mix(in_srgb,var(--water-deep)_75%,transparent)_100%)] lg:h-[30%]" />
         {!reduce && <motion.div aria-hidden="true" style={{ opacity: haze }} className="pointer-events-none absolute inset-0 z-[5] bg-[linear-gradient(180deg,color-mix(in_srgb,var(--sky-light)_55%,transparent)_0%,color-mix(in_srgb,var(--sky-glow)_45%,var(--sky-low))_55%,var(--sky-low)_100%)]" />}
+        <div aria-hidden="true" className="pointer-events-none absolute inset-0 z-[4] bg-[radial-gradient(ellipse_75%_75%_at_25%_50%,rgba(4,26,20,0.85)_0%,transparent_100%)]" />
         <motion.div aria-hidden="true" style={{ opacity: shade }} className="pointer-events-none absolute inset-0 z-[6] bg-background" />
 
         <motion.div
@@ -554,26 +555,26 @@ export default function HeroFloatingCard({
           className="pointer-events-none relative z-[10] mx-auto flex h-full w-[var(--container)] flex-col justify-center py-10 lg:py-16"
         >
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
-            {/* Left Column: Copy & Actions */}
-            <div className="lg:col-span-7 flex flex-col items-start text-left gap-5 lg:gap-6">
+            {/* Left Column: High-Contrast Copy Panel */}
+            <div className="lg:col-span-7 flex flex-col items-start text-left gap-5 lg:gap-6 p-6 sm:p-8 rounded-3xl bg-emerald-950/85 border border-amber-400/35 backdrop-blur-xl shadow-2xl ring-1 ring-white/10">
               {/* Badge Pill */}
               <BlurReveal show={ready} y={20} duration={0.8} delay={ease(1)}>
-                <div className="inline-flex items-center gap-2.5 rounded-full border border-amber-500/40 bg-background/85 px-4 py-1.5 text-xs font-semibold uppercase tracking-wider text-amber-800 dark:text-amber-300 shadow-lg backdrop-blur-md ring-1 ring-amber-500/20">
+                <div className="inline-flex items-center gap-2.5 rounded-full border border-amber-400/50 bg-emerald-900/90 px-4 py-1.5 text-xs font-bold uppercase tracking-wider text-amber-300 shadow-lg backdrop-blur-md ring-1 ring-amber-400/30">
                   <span className="relative flex h-2.5 w-2.5">
                     <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-emerald-400 opacity-75"></span>
-                    <span className="relative inline-flex h-2.5 w-2.5 rounded-full bg-emerald-500"></span>
+                    <span className="relative inline-flex h-2.5 w-2.5 rounded-full bg-emerald-400"></span>
                   </span>
                   <span>{badgeText}</span>
                 </div>
               </BlurReveal>
 
               {/* Title & Highlighted Subtitle */}
-              <h1 className="text-balance text-4xl sm:text-5xl lg:text-6xl font-extrabold tracking-tight text-foreground leading-[1.08]">
+              <h1 className="text-balance text-4xl sm:text-5xl lg:text-6xl font-extrabold tracking-tight text-white leading-[1.08] drop-shadow-md">
                 <BlurReveal show={ready} y={24} duration={0.9} delay={ease(2)} className="block">
                   {title}
                 </BlurReveal>
                 {titleMuted && (
-                  <BlurReveal show={ready} y={24} duration={0.9} delay={ease(3)} className="block mt-1 bg-gradient-to-r from-amber-600 via-yellow-600 to-amber-700 dark:from-amber-400 dark:via-yellow-300 dark:to-amber-500 bg-clip-text text-transparent">
+                  <BlurReveal show={ready} y={24} duration={0.9} delay={ease(3)} className="block mt-1 text-amber-300 font-extrabold drop-shadow-md">
                     {titleMuted}
                   </BlurReveal>
                 )}
@@ -581,7 +582,7 @@ export default function HeroFloatingCard({
 
               {/* Description */}
               {description && (
-                <BlurReveal as="p" show={ready} y={24} duration={0.9} delay={ease(4)} className="max-w-xl text-balance text-base sm:text-lg text-foreground/85 leading-relaxed font-normal">
+                <BlurReveal as="p" show={ready} y={24} duration={0.9} delay={ease(4)} className="max-w-xl text-balance text-base sm:text-lg text-emerald-100/95 leading-relaxed font-medium drop-shadow-sm">
                   {description}
                 </BlurReveal>
               )}
@@ -595,7 +596,7 @@ export default function HeroFloatingCard({
                     transition={{ duration: 0.9, ease: EASE, delay: ease(5) }}
                     className="w-full sm:w-auto"
                   >
-                    <DotArrowButton text={primaryButton.text} href={primaryButton.href} className="w-full justify-center px-7 py-3.5 text-base font-bold shadow-lg shadow-amber-500/10" />
+                    <DotArrowButton text={primaryButton.text} href={primaryButton.href} className="w-full justify-center px-7 py-3.5 text-base font-bold shadow-xl shadow-amber-500/20 bg-[#D4A537] text-[#041F18] hover:bg-[#c49527]" />
                   </motion.div>
                 )}
                 {secondaryButton && (
@@ -605,7 +606,7 @@ export default function HeroFloatingCard({
                     transition={{ duration: 0.9, ease: EASE, delay: ease(6) }}
                     className="w-full sm:w-auto"
                   >
-                    <DotArrowButton text={secondaryButton.text} href={secondaryButton.href} variant="secondary" className="w-full justify-center px-6 py-3.5 text-base font-semibold backdrop-blur-md" />
+                    <DotArrowButton text={secondaryButton.text} href={secondaryButton.href} variant="secondary" className="w-full justify-center px-6 py-3.5 text-base font-semibold bg-emerald-900/80 hover:bg-emerald-800 text-white border border-amber-400/40 backdrop-blur-md" />
                   </motion.div>
                 )}
               </div>
@@ -615,18 +616,18 @@ export default function HeroFloatingCard({
                 initial={reduce ? false : { opacity: 0, y: 24 }}
                 animate={ready || reduce ? { opacity: 1, y: 0 } : { opacity: 0, y: 24 }}
                 transition={{ duration: 0.9, ease: EASE, delay: ease(7) }}
-                className="pointer-events-auto grid grid-cols-1 sm:grid-cols-3 gap-2.5 sm:gap-3 w-full max-w-2xl pt-4 border-t border-border/40"
+                className="pointer-events-auto grid grid-cols-1 sm:grid-cols-3 gap-2.5 sm:gap-3 w-full max-w-2xl pt-4 border-t border-emerald-800/60"
               >
                 {items.map((badge) => {
                   const Icon = badge.Icon;
                   return (
-                    <div key={badge.title} className="flex items-center gap-3 rounded-xl border border-border/60 bg-card/75 p-2.5 sm:p-3 backdrop-blur-md shadow-md transition-all hover:border-amber-500/50 hover:bg-card/90">
-                      <div className="flex h-9 w-9 shrink-0 items-center justify-center rounded-lg bg-amber-500/15 text-amber-600 dark:text-amber-400">
+                    <div key={badge.title} className="flex items-center gap-3 rounded-xl border border-emerald-700/60 bg-emerald-900/80 p-2.5 sm:p-3 backdrop-blur-md shadow-md transition-all hover:border-amber-400/60 hover:bg-emerald-900/95">
+                      <div className="flex h-9 w-9 shrink-0 items-center justify-center rounded-lg bg-amber-400/20 text-amber-300 border border-amber-400/30">
                         <Icon className="size-5" />
                       </div>
                       <div className="min-w-0">
-                        <div className="text-xs font-bold text-foreground truncate">{badge.title}</div>
-                        <div className="text-[11px] text-foreground/75 truncate">{badge.subtitle}</div>
+                        <div className="text-xs font-bold text-white truncate">{badge.title}</div>
+                        <div className="text-[11px] text-emerald-200 truncate">{badge.subtitle}</div>
                       </div>
                     </div>
                   );

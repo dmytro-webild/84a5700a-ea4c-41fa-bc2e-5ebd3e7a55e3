@@ -26,7 +26,7 @@ export default function NavbarGlidePill({
     { name: "Add-ons", href: "/add-ons" },
     { name: "About", href: "/about" },
   ],
-  primaryButton = { text: "Get Your CAC Certificate", href: "/ebook" },
+  primaryButton = { text: "Get the Guide", href: "/ebook" },
   secondaryButton,
   className,
 }: NavbarGlidePillProps) {
