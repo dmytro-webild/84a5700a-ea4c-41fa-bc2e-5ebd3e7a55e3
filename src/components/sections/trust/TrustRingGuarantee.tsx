@@ -121,7 +121,7 @@ export default function TrustRingGuarantee({
   },
   secondaryButton = {
     text: "Have Questions? Contact Us",
-    href: "#contact"
+    href: "#start-now"
   },
   stats = [
     { value: "100%", label: "Approval Guarantee" },

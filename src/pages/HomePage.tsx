@@ -1,191 +1,196 @@
 import HeroFloatingCard from "@/components/sections/hero/HeroFloatingCard";
-import AboutRingStatement from "@/components/sections/about/AboutRingStatement";
+import ProofStrip from "@/components/sections/proof/ProofStrip";
+import ProblemHurdles from "@/components/sections/problem/ProblemHurdles";
 import ProcessRingSteps from "@/components/sections/features/ProcessRingSteps";
-import TrustRingGuarantee from "@/components/sections/trust/TrustRingGuarantee";
 import PricingRingPlans from "@/components/sections/pricing/PricingRingPlans";
+import NameGeneratorTeaser from "@/components/sections/tools/NameGeneratorTeaser";
+import Letterhead3DShowcase from "@/components/sections/showcase/Letterhead3DShowcase";
+import EbookContentsGrid from "@/components/sections/ebook/EbookContentsGrid";
+import AboutRingStatement from "@/components/sections/about/AboutRingStatement";
+import FounderStory from "@/components/sections/about/FounderStory";
 import TestimonialRingQuotes from "@/components/sections/testimonial/TestimonialRingQuotes";
 import FaqRippleAccordion from "@/components/sections/faq/FaqRippleAccordion";
-import ContactRingForm from "@/components/sections/contact/ContactRingForm";
+import StartNowCTA from "@/components/sections/cta/StartNowCTA";
 import LoaderRingCounter from "@/components/loaders/LoaderRingCounter";
 
 export default function HomePage() {
   return (
     <>
-      <LoaderRingCounter
-        brand="Register It Yourself"
-      />
+      <LoaderRingCounter brand="Register It Yourself" />
 
+      {/* 1. Hero */}
       <div id="home" data-webild-section="HeroFloatingCard" data-webild-section-id="HeroFloatingCard-1" data-section="home">
         <HeroFloatingCard
           shape="twist"
-          title="Register your business yourself"
-          description="Skip agent fees and file your CAC forms this week."
+          title="Register your business with CAC."
+          titleMuted="Yourself. This week."
+          description="Skip the agent fees. Our step-by-step guide, and a real person on call if you want one, takes you from business idea to CAC certificate, first time."
           primaryButton={{
-            text: "Get started",
+            text: "Get the Guide — ₦10,000",
             href: "#pricing"
           }}
           secondaryButton={{
-            text: "How it works",
-            href: "#process"
+            text: "Do It With Us — ₦25,000",
+            href: "#pricing"
           }}
         />
       </div>
 
+      {/* 2. Proof strip */}
+      <div id="proof" data-webild-section="ProofStrip" data-webild-section-id="ProofStrip-1" data-section="proof">
+        <ProofStrip
+          approvedTime="Name approved in 3 minutes"
+          lawyerText="Registered without a lawyer"
+          initialCount={1420}
+          targetCount={1850}
+        />
+      </div>
+
+      {/* 3. Problem section */}
+      <div id="problem" data-webild-section="ProblemHurdles" data-webild-section-id="ProblemHurdles-1" data-section="problem">
+        <ProblemHurdles
+          tag="CAC Hurdles"
+          title="Opened the CAC portal and closed it again?"
+          description="Navigating official government portals alone shouldn't feel like a nightmare. Here is why most founders give up or overpay."
+        />
+      </div>
+
+      {/* 4. How it works (3-step 3D journey) */}
+      <div id="process" data-webild-section="ProcessRingSteps" data-webild-section-id="ProcessRingSteps-1" data-section="process">
+        <ProcessRingSteps
+          tag="3D 3-Step Journey"
+          title="Three steps to"
+          titleDim="officially registered"
+          description="From business idea to CAC certificate, without paying agent markups."
+          items={[
+            {
+              title: "Pick & reserve your name",
+              description: "Search availability on the portal and reserve your exact business name in 3 minutes without common query rejections.",
+              imageSrc: "https://img.b2bpic.net/free-photo/flat-lay-top-view-office-table-desk-workspace-background_1150-6860.jpg",
+              imageAlt: "Office table workspace for name search"
+            },
+            {
+              title: "Follow the screen guide",
+              description: "Walk through every portal section using our step-by-step video lessons and direct personal review.",
+              imageSrc: "https://img.b2bpic.net/free-photo/knolling-concept-with-sticky-notes-accessories-green-shades_23-2148362185.jpg",
+              imageAlt: "Screen-by-screen filing guide notes"
+            },
+            {
+              title: "Get CAC approved & certified",
+              description: "Submit your filing with full confidence and receive your official CAC certificate without paying expensive agent fees.",
+              imageSrc: "https://img.b2bpic.net/free-photo/workspace-with-office-supplies-laptop-notebook-stationery_23-2151968886.jpg",
+              imageAlt: "Approved CAC certificate documents"
+            }
+          ]}
+        />
+      </div>
+
+      {/* 5. Choose your path (Pricing cards) */}
+      <div id="pricing" data-webild-section="PricingRingPlans" data-webild-section-id="PricingRingPlans-1" data-section="pricing">
+        <PricingRingPlans
+          tag="Choose Your Path"
+          title="Clear pricing,"
+          titleDim="zero hidden agent fees"
+          description="Select the level of guidance you need to register independently."
+          upgradeNote="Already bought the ebook? Upgrade to Do It With Us for just ₦15,000. We deduct what you already paid."
+          items={[
+            {
+              title: "Do it yourself",
+              price: "₦10,000",
+              period: "one-time payment",
+              description: "The complete Register It Yourself ebook: screen-by-screen CAC walkthrough for business names and limited companies, name search tips, query fixes, post-registration roadmap (TIN, bank account, annual returns), templates and checklists. Instant download.",
+              features: [
+                "Complete Register It Yourself Ebook",
+                "Screen-by-screen CAC walkthrough (BN & LTD)",
+                "3-minute name search & reservation strategy",
+                "Fast query resolution guide (24h turnaround)",
+                "Post-registration roadmap (TIN, Bank, Annual Returns)",
+                "Fillable templates and checklists",
+                "Instant download after purchase"
+              ],
+              button: {
+                text: "Get the Guide — ₦10,000",
+                href: "#start-now"
+              }
+            },
+            {
+              title: "Do it with us",
+              badge: "Most Popular",
+              popular: true,
+              price: "₦25,000",
+              period: "one-time payment",
+              deposit: "Book today with a ₦7,500 deposit",
+              description: "Includes the full ebook, plus a live 1-on-1 Zoom or Google Meet session where we go through the CAC registration process together, screen by screen, from name search to submission. Also includes 2 custom letterhead designs (print-ready PDF + editable version), delivered 2–3 working days after CAC approval.",
+              features: [
+                "Full Register It Yourself Ebook included",
+                "Live 1-on-1 Zoom / Google Meet session with a guide",
+                "Screen-by-screen portal submission walkthrough",
+                "2 Custom Letterhead designs (Print PDF + Editable)",
+                "Letterhead delivered 2–3 working days post-approval",
+                "Book with a ₦7,500 deposit",
+                "100% CAC Approval Guarantee"
+              ],
+              button: {
+                text: "Book Do It With Us — ₦25,000",
+                href: "#start-now"
+              }
+            }
+          ]}
+        />
+      </div>
+
+      {/* 6. Name Generator teaser */}
+      <div id="name-teaser" data-webild-section="NameGeneratorTeaser" data-webild-section-id="NameGeneratorTeaser-1" data-section="name-teaser">
+        <NameGeneratorTeaser />
+      </div>
+
+      {/* 7. 3D Letterhead showcase */}
+      <div id="letterhead-showcase" data-webild-section="Letterhead3DShowcase" data-webild-section-id="Letterhead3DShowcase-1" data-section="letterhead-showcase">
+        <Letterhead3DShowcase />
+      </div>
+
+      {/* 8. Ebook contents grid */}
+      <div id="ebook-grid" data-webild-section="EbookContentsGrid" data-webild-section-id="EbookContentsGrid-1" data-section="ebook-grid">
+        <EbookContentsGrid />
+      </div>
+
+      {/* 9. Why RIY section */}
       <div id="about" data-webild-section="AboutRingStatement" data-webild-section-id="AboutRingStatement-1" data-section="about">
         <AboutRingStatement
           tag="Why RIY"
-          title="Skip the agent markup, keep the speed. When founder Michelle registered her company herself, approval took three minutes. We give you clear guidance without paying hidden fees."
+          title="The trusted middle path: cheaper than an agent, clearer than YouTube, with a real person beside you if you want one."
           items={[
             {
-              title: "3-minute approval",
-              description: "Michelle registered her company directly, getting approved three minutes after payment.",
-              imageSrc: "https://img.b2bpic.net/free-photo/modern-camera-coffee-cup-digital-tablet-magnifying-glass-map_23-2147958216.jpg",
-              imageAlt: "Modern camera; coffee cup; digital tablet and magnifying glass on map"
-            },
-            {
-              title: "The trusted middle path",
-              description: "Clearer than piecing together random videos and far cheaper than hiring expensive agents.",
+              title: "Cheaper than an agent",
+              description: "Save ₦50,000 to ₦80,000+ compared to agent markups. Pay official CAC portal fees directly.",
               imageSrc: "https://img.b2bpic.net/free-photo/young-businessman-analyzing-data-holding-magnifying-glass-generated-by-ai_188544-36940.jpg",
-              imageAlt: "Young businessman analyzing data holding magnifying glass generated by AI"
+              imageAlt: "Cheaper than traditional agent markups"
             },
             {
-              title: "Direct guidance",
-              description: "Step-by-step tutorials backed by real people ready to review your filing when needed.",
-              imageSrc: "https://img.b2bpic.net/free-photo/coffee-cup-pen-keyboard-spiral-notebook-colored-wooden-background_23-2147916222.jpg",
-              imageAlt: "Coffee cup; pen; keyboard; and spiral notebook on colored and wooden background"
-            }
-          ]}
-        />
-      </div>
-
-      <div id="process" data-webild-section="ProcessRingSteps" data-webild-section-id="ProcessRingSteps-1" data-section="process">
-        <ProcessRingSteps
-          tag="How it works"
-          title="Three steps to"
-          titleDim="officially registered"
-          items={[
-            {
-              title: "Pick your name",
-              description: "Search availability on the portal and reserve your exact business name without common submission errors.",
+              title: "Clearer than YouTube",
+              description: "Structured step-by-step video lessons updated for current CAC rules. No outdated advice or trial-and-error.",
               imageSrc: "https://img.b2bpic.net/free-photo/flat-lay-top-view-office-table-desk-workspace-background_1150-6860.jpg",
-              imageAlt: "Flat lay, top view office table desk. Workspace background"
+              imageAlt: "Clear step-by-step guide"
             },
             {
-              title: "Follow the guide",
-              description: "Walk through every portal section using our step-by-step video lessons and direct personal guidance.",
-              imageSrc: "https://img.b2bpic.net/free-photo/knolling-concept-with-sticky-notes-accessories-green-shades_23-2148362185.jpg",
-              imageAlt: "Knolling concept with sticky notes and accessories in green shades"
-            },
-            {
-              title: "Get CAC approved",
-              description: "Submit your filing with full confidence and receive your official certificate without paying expensive agent fees.",
-              imageSrc: "https://img.b2bpic.net/free-photo/workspace-with-office-supplies-laptop-notebook-stationery_23-2151968886.jpg",
-              imageAlt: "Workspace with office supplies: laptop, notebook, and stationery"
+              title: "Real person beside you",
+              description: "Need someone to double-check your submission? Our team is on call via WhatsApp and 1-on-1 Zoom.",
+              imageSrc: "https://img.b2bpic.net/free-photo/coffee-cup-pen-keyboard-spiral-notebook-colored-wooden-background_23-2147916222.jpg",
+              imageAlt: "Direct human support backup"
             }
           ]}
         />
       </div>
 
-      <div id="trust" data-webild-section="TrustRingGuarantee" data-webild-section-id="TrustRingGuarantee-1" data-section="trust">
-        <TrustRingGuarantee
-          tag="Satisfaction Guarantee"
-          title="Register with 100% confidence."
-          titleDim="We back your DIY filing."
-          description="Filing your CAC business registration yourself shouldn't feel risky. With our approval guarantee and direct support commitment, you get the speed of DIY with total peace of mind."
-          guaranteeTitle="100% Approval Guarantee & Human Support Commitment"
-          guaranteeBadge="Zero-Risk Filing Protection"
-          guaranteeDescription="If your business registration faces queries or rejections due to guidance error in our course, our team will personally assist you until approved — or refund 100% of your RIY purchase."
-          guaranteePoints={[
-            "Pre-submission document check to prevent common CAC portal mistakes",
-            "Direct WhatsApp & email access to experienced Nigerian filing guides",
-            "Full refund guarantee if our instructions fail to guide your registration",
-            "Always updated to match the latest Corporate Affairs Commission rules"
-          ]}
-          pillars={[
-            {
-              icon: "shield",
-              title: "100% CAC Approval Guarantee",
-              description: "Follow our verified step-by-step videos. If CAC raises a query based on our guides, we review and fix it for free or issue a full refund."
-            },
-            {
-              icon: "support",
-              title: "Human Support Commitment",
-              description: "You're never stranded. Our team of Nigerian business registration guides is ready on WhatsApp and email to review your details."
-            },
-            {
-              icon: "savings",
-              title: "Zero Hidden Agent Fees",
-              description: "Save ₦80,000+ compared to traditional registration agents. Pay only for clear guidance and official portal fees directly."
-            },
-            {
-              icon: "speed",
-              title: "3-Minute Fast Approval",
-              description: "Learn the exact method founder Michelle used to get business name approval within 3 minutes of payment on the official portal."
-            }
-          ]}
-          primaryButton={{
-            text: "Get Started Risk-Free",
-            href: "#pricing"
-          }}
-          secondaryButton={{
-            text: "Have Questions? Contact Us",
-            href: "#contact"
-          }}
-          stats={[
-            { value: "100%", label: "Approval Guarantee" },
-            { value: "₦80k+", label: "Avg. Agent Fee Saved" },
-            { value: "3 Mins", label: "Fastest Approval Time" },
-            { value: "100%", label: "Dedicated Human Support" }
-          ]}
-        />
+      {/* 10. Founder's story */}
+      <div id="founder" data-webild-section="FounderStory" data-webild-section-id="FounderStory-1" data-section="founder">
+        <FounderStory />
       </div>
 
-      <div id="pricing" data-webild-section="PricingRingPlans" data-webild-section-id="PricingRingPlans-1" data-section="pricing">
-        <PricingRingPlans
-          tag="Pricing"
-          title="Clear pricing,"
-          titleDim="zero hidden fees"
-          description="Choose the level of guidance you need to register independently."
-          items={[
-            {
-              title: "Basic DIY",
-              price: "₦15,000",
-              period: "one-time fee",
-              description: "For hands-on founders who want step-by-step video instructions.",
-              features: [
-                "DIY video course",
-                "Document templates included",
-                "Step-by-step registration guide",
-                "Lifetime access to materials"
-              ],
-              button: {
-                text: "Choose Basic",
-                href: "#contact"
-              }
-            },
-            {
-              title: "Guided Plan",
-              price: "₦45,000",
-              period: "one-time fee",
-              description: "For founders who want direct review and guidance before submitting.",
-              features: [
-                "Everything in Basic DIY",
-                "Personal guide support",
-                "One-on-one document review",
-                "Priority WhatsApp assistance"
-              ],
-              button: {
-                text: "Choose Guided",
-                href: "#contact"
-              }
-            }
-          ]}
-        />
-      </div>
-
+      {/* 11. Testimonial carousel */}
       <div id="testimonial" data-webild-section="TestimonialRingQuotes" data-webild-section-id="TestimonialRingQuotes-1" data-section="testimonial">
         <TestimonialRingQuotes
-          tag="Social Proof"
+          tag="Founder Stories"
           title="Trusted by entrepreneurs"
           titleDim="who skipped agent fees"
           items={[
@@ -194,103 +199,72 @@ export default function HomePage() {
               name: "Chidi E.",
               role: "Tech Founder, Lagos",
               imageSrc: "https://img.b2bpic.net/free-photo/handsome-african-american-man-with-beard-turn-face-camera-smiling-confident-standing-pink-background_1258-77841.jpg",
-              imageAlt: "Handsome african-american man with beard, turn face at camera and smiling confident, standing over pink background"
+              imageAlt: "Chidi E, Tech Founder"
             },
             {
-              quote: "Michelle's approach is pure gold. My business name registration was submitted and approved without a single query or rejection.",
+              quote: "Michelle's approach is pure gold. My business name registration was submitted and approved within 3 minutes without a single query.",
               name: "Amaka O.",
-              role: "Business Consultant",
+              role: "Business Consultant, Abuja",
               imageSrc: "https://img.b2bpic.net/free-photo/portrait-woman-women-s-day_23-2151931543.jpg",
-              imageAlt: "Portrait of woman for women's day"
+              imageAlt: "Amaka O, Business Consultant"
             },
             {
               quote: "I was intimidated by official government forms, but this course broke down every field into simple language. Got registered in four days.",
               name: "Bayo T.",
-              role: "Creative Director",
+              role: "Creative Director, Port Harcourt",
               imageSrc: "https://img.b2bpic.net/free-photo/closeup-portrait-curly-brunet-bearded-man-floral-shirt-smiling-gently-leaning-wall-outside-listening-music-headphones_197531-28846.jpg",
-              imageAlt: "Closeup portrait of curly brunet bearded man in floral shirt smiling gently leaning on wall outside and listening to music in headphones"
+              imageAlt: "Bayo T, Creative Director"
             },
             {
               quote: "Clear, professional, and genuinely helpful. Registering my brand myself gave me full control over our legal setup from day one.",
               name: "Nneka U.",
-              role: "Fashion Designer",
+              role: "Fashion Entrepreneur, Enugu",
               imageSrc: "https://img.b2bpic.net/free-photo/young-smiling-professional-woman-having-coffee-break-her-full-working-day-she-holds-paper-cup-outdoors-near-business-building-while-relaxing-enjoying-her-beverage_158595-6856.jpg",
-              imageAlt: "Young smiling professional woman having a coffee break during her full working day. She holds a paper cup outdoors near the business building while relaxing and enjoying her beverage."
-            },
-            {
-              quote: "Finally, a straightforward system that doesn't feel like a black box. No hidden agent markups, just total transparency and expert guidance.",
-              name: "Ifeanyi K.",
-              role: "Logistics Founder",
-              imageSrc: "https://img.b2bpic.net/free-photo/front-view-smiley-handsome-man-with-arms-crossed_23-2148946250.jpg",
-              imageAlt: "Front view of smiley handsome man with arms crossed"
+              imageAlt: "Nneka U, Fashion Entrepreneur"
             }
           ]}
         />
       </div>
 
+      {/* 12. FAQ accordion */}
       <div id="faq" data-webild-section="FaqRippleAccordion" data-webild-section-id="FaqRippleAccordion-1" data-section="faq">
         <FaqRippleAccordion
           tag="Common Questions"
-          title="Before You"
-          titleDim="Register"
-          description="Plain answers to common questions about our platform and the registration process."
+          title="Frequently Asked"
+          titleDim="Questions"
+          description="Everything you need to know about registering your business with CAC yourself."
           primaryButton={{
             text: "Contact Support",
-            href: "#contact"
+            href: "#start-now"
           }}
           items={[
             {
-              title: "Are you affiliated with CAC?",
-              description: "No. RIY is an independent educational platform. We provide guides and support to help you navigate the public portal yourself."
+              title: "Is it legal to register my business without a lawyer or agent?",
+              description: "Yes! The Corporate Affairs Commission (CAC) of Nigeria explicitly permits business founders and proprietors to register their own business names and limited companies directly on the CAC Public Portal without paying third-party agent markups."
             },
             {
-              title: "Do I need to pay an agent?",
-              description: "No. Our courses show you how to complete your application independently without paying agent markups."
+              title: "What is included in the ₦10,000 DIY Guide vs ₦25,000 Do It With Us?",
+              description: "The ₦10,000 DIY option gives you instant access to the complete Register It Yourself ebook with screen-by-screen video tutorials, templates, and post-registration guides. The ₦25,000 Do It With Us plan adds a live 1-on-1 Zoom session where we complete the filing together, plus 2 custom corporate letterhead designs delivered 2–3 days after approval."
             },
             {
-              title: "How long does registration take?",
-              description: "Most of our users complete filing and get approved within the same week, depending on name availability and accurate details."
+              title: "Can I upgrade from the ₦10,000 ebook to Do It With Us later?",
+              description: "Yes! If you purchase the ₦10,000 ebook and decide you want live 1-on-1 guidance, you can upgrade to Do It With Us for just ₦15,000. We deduct what you already paid."
             },
             {
-              title: "What if I get stuck while filing?",
-              description: "The Guided plan includes direct human support to review your submission and answer specific filing questions."
+              title: "How long does CAC approval take?",
+              description: "Name reservations can be approved within 3 minutes to 24 hours depending on name availability. Full registration certificates are typically issued by CAC within 2 to 5 working days."
             },
             {
-              title: "What pricing options do you offer?",
-              description: "We offer self-paced learning starting at ₦15,000 and full hands-on guided support for ₦45,000."
+              title: "What happens if CAC queries my application?",
+              description: "Our guide includes a complete 24-hour query resolution playbook. If you chose the Do It With Us plan or face a guidance error, our team personally assists you to fix the query until approved — backed by our 100% Satisfaction Guarantee."
             }
           ]}
         />
       </div>
 
-      <div id="contact" data-webild-section="ContactRingForm" data-webild-section-id="ContactRingForm-1" data-section="contact">
-        <ContactRingForm
-          title="Ready to register?"
-          titleDim="Start your business registration today"
-          fields={[
-            {
-              name: "name",
-              label: "Full Name",
-              type: "text",
-              placeholder: "e.g. Imogen Turner"
-            },
-            {
-              name: "email",
-              label: "Email Address",
-              type: "email",
-              placeholder: "hello@registerityourself.com"
-            },
-            {
-              name: "message",
-              label: "Your Message",
-              type: "textarea",
-              placeholder: "How can we help you?"
-            }
-          ]}
-          buttonText="Send Message"
-          imageSrc="https://img.b2bpic.net/free-photo/top-view-ring-binder_23-2149569003.jpg"
-          imageAlt="Top view over ring binder"
-        />
+      {/* 13. Start Now CTA */}
+      <div id="start-now" data-webild-section="StartNowCTA" data-webild-section-id="StartNowCTA-1" data-section="start-now">
+        <StartNowCTA />
       </div>
     </>
   );
