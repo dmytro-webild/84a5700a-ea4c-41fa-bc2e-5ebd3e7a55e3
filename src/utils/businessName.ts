@@ -28,10 +28,9 @@ export function getSavedBusinessName(): string {
 
 export function saveBusinessName(name: string): void {
   if (typeof window === "undefined") return;
-  const trimmed = name.trim();
-  if (!trimmed) return;
-  localStorage.setItem(STORAGE_KEY_NAME, trimmed);
-  window.dispatchEvent(new CustomEvent(BUSINESS_NAME_EVENT, { detail: trimmed }));
+  if (name === undefined || name === null) return;
+  localStorage.setItem(STORAGE_KEY_NAME, name);
+  window.dispatchEvent(new CustomEvent(BUSINESS_NAME_EVENT, { detail: name }));
 }
 
 export function getSavedShortlist(): ShortlistedName[] {

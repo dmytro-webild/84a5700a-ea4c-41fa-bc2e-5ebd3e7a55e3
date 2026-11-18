@@ -98,7 +98,7 @@ export default function NameGeneratorPage() {
   useEffect(() => {
     const handleUpdate = (e: Event) => {
       const customEvent = e as CustomEvent<string>;
-      if (customEvent.detail) {
+      if (customEvent.detail !== undefined) {
         setActiveSavedName(customEvent.detail);
       } else {
         setActiveSavedName(getSavedBusinessName());
