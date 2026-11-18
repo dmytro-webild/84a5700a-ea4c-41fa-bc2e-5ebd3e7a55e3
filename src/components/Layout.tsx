@@ -18,12 +18,20 @@ export default function Layout() {
               href: "#process"
             },
             {
-              name: "Guarantee",
-              href: "#trust"
-            },
-            {
               name: "Pricing",
               href: "#pricing"
+            },
+            {
+              name: "Name Checker",
+              href: "#name-teaser"
+            },
+            {
+              name: "Ebook",
+              href: "#ebook-grid"
+            },
+            {
+              name: "Founder",
+              href: "#founder"
             },
             {
               name: "FAQ",
@@ -31,12 +39,12 @@ export default function Layout() {
             }
           ]}
           primaryButton={{
-            text: "Get Started",
+            text: "Get the Guide — ₦10k",
             href: "#pricing"
           }}
           secondaryButton={{
-            text: "Contact",
-            href: "#contact"
+            text: "Do It With Us — ₦25k",
+            href: "#pricing"
           }}
         />
       </header>
@@ -62,42 +70,46 @@ export default function Layout() {
                   href: "#process"
                 },
                 {
-                  text: "Satisfaction Guarantee",
-                  href: "#trust"
-                },
-                {
-                  text: "Pricing Plans",
+                  text: "Pricing & Plans",
                   href: "#pricing"
                 },
                 {
-                  text: "Founder Story",
+                  text: "Name Checker Tool",
+                  href: "#name-teaser"
+                },
+                {
+                  text: "3D Letterhead Showcase",
+                  href: "#letterhead-showcase"
+                },
+                {
+                  text: "Ebook Curriculum",
+                  href: "#ebook-grid"
+                }
+              ]
+            },
+            {
+              title: "About & Proof",
+              links: [
+                {
+                  text: "Why RIY",
                   href: "#about"
                 },
                 {
-                  text: "Success Stories",
+                  text: "Founder's Story",
+                  href: "#founder"
+                },
+                {
+                  text: "Testimonials",
                   href: "#testimonial"
-                }
-              ]
-            },
-            {
-              title: "Support",
-              links: [
+                },
                 {
                   text: "FAQ & Help",
                   href: "#faq"
-                },
-                {
-                  text: "Get In Touch",
-                  href: "#contact"
-                },
-                {
-                  text: "WhatsApp Support",
-                  href: "https://wa.me/"
                 }
               ]
             },
             {
-              title: "Contact",
+              title: "Contact & Legal",
               links: [
                 {
                   text: "hello@registerityourself.com",
@@ -105,7 +117,11 @@ export default function Layout() {
                 },
                 {
                   text: "Lagos, Nigeria (9am–5pm WAT)",
-                  href: "#contact"
+                  href: "#start-now"
+                },
+                {
+                  text: "WhatsApp Support",
+                  href: "#start-now"
                 }
               ]
             }

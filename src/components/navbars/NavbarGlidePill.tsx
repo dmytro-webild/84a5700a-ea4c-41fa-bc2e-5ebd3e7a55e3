@@ -24,7 +24,7 @@ export default function NavbarGlidePill({
     { name: "Pricing", href: "#pricing" },
     { name: "Support", href: "#faq" },
   ],
-  primaryButton = { text: "Get started", href: "#contact" },
+  primaryButton = { text: "Get started", href: "#start-now" },
   secondaryButton,
   className,
 }: NavbarGlidePillProps) {
