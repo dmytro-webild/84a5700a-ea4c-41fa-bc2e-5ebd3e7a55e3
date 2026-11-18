@@ -9,15 +9,15 @@
 
 /* webild:theme-ai */
 :root {
-  --primary-cta: #bb6000;
-  --primary-cta-text: #0a0a0a;
-  --secondary-cta: #d4a537;
-  --secondary-cta-text: #1c1c1c;
-  --background-accent: #966900;
+  --primary-cta: #d97706;
+  --primary-cta-text: #ffffff;
+  --secondary-cta: #eab308;
+  --secondary-cta-text: #0a0a0a;
+  --background-accent: #b45309;
 
   --background: #faf8f3;
-  --foreground: #1c1c1c;
-  --card: #181818;
+  --foreground: #0a0a0a;
+  --card: #ffffff;
   --card-foreground: var(--foreground);
   --popover: var(--card);
   --popover-foreground: var(--foreground);
@@ -25,17 +25,17 @@
   --primary-foreground: var(--primary-cta-text);
   --secondary: var(--secondary-cta);
   --secondary-foreground: var(--secondary-cta-text);
-  --muted: #d9d7d3;
-  --muted-foreground: #3d3d3b;
+  --muted: #e2e0dc;
+  --muted-foreground: #242422;
   --accent: var(--background-accent);
-  --accent-foreground: #fbf7f3;
-  --accent-strong: #ec9f00;
-  --deep: #0b4d3b;
-  --deep-foreground: #dedede;
-  --destructive: #ff6b8a;
-  --destructive-foreground: #040015;
-  --border: #c7c5c1;
-  --input: #c7c5c1;
+  --accent-foreground: #ffffff;
+  --accent-strong: #f59e0b;
+  --deep: #064e3b;
+  --deep-foreground: #f3f4f6;
+  --destructive: #ef4444;
+  --destructive-foreground: #ffffff;
+  --border: #aba8a4;
+  --input: #aba8a4;
   --ring: var(--primary-cta);
 
   --sky-top: #dbdad5;
@@ -70,17 +70,17 @@
   --font-heading: "Space Grotesk", "Helvetica Neue", Helvetica, Arial, sans-serif;
   --font-body: "Plus Jakarta Sans", "Helvetica Neue", Helvetica, Arial, sans-serif;
   --font-label: "Figtree", "Helvetica Neue", Helvetica, Arial, sans-serif;
-  --heading-weight: 400;
-  --heading-tracking: -0.035em;
-  --heading-leading: 1;
-  --text-display: clamp(2.625rem, 1.3rem + 3.6vw, 4.5rem);
-  --text-h1: clamp(2.25rem, 1.3rem + 2.8vw, 3.625rem);
-  --text-h2: clamp(1.875rem, 1.3rem + 1.9vw, 3rem);
-  --text-h3: clamp(1.5rem, 1.25rem + 0.7vw, 2rem);
-  --text-body-lg: clamp(1.0625rem, 1rem + 0.25vw, 1.25rem);
-  --text-body: clamp(1rem, 0.95rem + 0.15vw, 1.125rem);
-  --text-small: 0.9375rem;
-  --text-label: 0.8125rem;
+  --heading-weight: 600;
+  --heading-tracking: -0.02em;
+  --heading-leading: 1.25;
+  --text-display: clamp(2.75rem, 1.5rem + 3.8vw, 4.75rem);
+  --text-h1: clamp(2.35rem, 1.4rem + 3vw, 3.75rem);
+  --text-h2: clamp(1.95rem, 1.35rem + 2vw, 3.125rem);
+  --text-h3: clamp(1.625rem, 1.3rem + 0.8vw, 2.125rem);
+  --text-body-lg: clamp(1.125rem, 1.05rem + 0.35vw, 1.35rem);
+  --text-body: clamp(1.0625rem, 1rem + 0.25vw, 1.25rem);
+  --text-small: 1rem;
+  --text-label: 0.875rem;
   --label-tracking: 0em;
   --label-case: none;
 
@@ -178,7 +178,8 @@ main[data-night-top] > header {
     background-color: var(--background);
     color: var(--foreground);
     font-family: "Plus Jakarta Sans", "Helvetica Neue", Helvetica, Arial, sans-serif;
-    font-weight: 400;
+    font-weight: 450;
+    line-height: 1.75;
     -webkit-font-smoothing: antialiased;
     min-height: 100vh;
   }
@@ -200,14 +201,14 @@ main[data-night-top] > header {
     display: inline-flex;
     align-items: center;
     justify-content: center;
-    gap: 0.5rem;
-    height: 3.125rem;
-    padding: 0 1.5rem;
+    gap: 0.625rem;
+    height: 3.375rem;
+    padding: 0 1.75rem;
     border-radius: 999px;
     font-family: var(--font-body);
     font-size: var(--text-body);
-    font-weight: 400;
-    line-height: 1.2;
+    font-weight: 600;
+    line-height: 1.3;
     letter-spacing: -0.01em;
     white-space: nowrap;
     color: var(--foreground);

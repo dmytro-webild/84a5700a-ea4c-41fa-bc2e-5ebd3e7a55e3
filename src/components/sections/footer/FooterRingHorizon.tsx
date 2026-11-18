@@ -98,13 +98,13 @@ export default function FooterRingHorizon({
         {/* Newsletter & WhatsApp List Signup */}
         <div className="rounded-2xl border border-amber-500/30 bg-amber-950/10 p-6 lg:p-8 flex flex-col lg:flex-row items-center justify-between gap-6">
           <div className="space-y-1.5 text-center lg:text-left">
-            <span className="text-xs font-bold text-amber-400 tracking-wider uppercase">
+            <span className="text-sm font-bold text-amber-400 tracking-wider uppercase">
               📲 Join 3,500+ Nigerian Founders
             </span>
-            <h3 className="text-lg font-bold text-white">
+            <h3 className="text-xl font-bold text-white">
               Get CAC Updates & Free Business Tools
             </h3>
-            <p className="text-xs text-zinc-400 max-w-lg">
+            <p className="text-sm text-zinc-200 max-w-lg leading-relaxed">
               Receive instant updates on CAC portal policy changes, name approval tips, and free document templates direct to your email or WhatsApp.
             </p>
           </div>
@@ -117,17 +117,17 @@ export default function FooterRingHorizon({
                 placeholder="Email or WhatsApp number..."
                 value={signupInput}
                 onChange={(e) => setSignupInput(e.target.value)}
-                className="w-full lg:w-72 rounded-xl bg-zinc-900 border border-zinc-700 px-3.5 py-2.5 text-xs text-white placeholder-zinc-500 focus:border-amber-500 focus:outline-none"
+                className="w-full lg:w-72 rounded-xl bg-zinc-900 border border-zinc-700 px-3.5 py-2.5 text-sm text-white placeholder-zinc-400 focus:border-amber-500 focus:outline-none"
               />
               <button
                 type="submit"
-                className="rounded-xl bg-amber-500 px-4 py-2.5 text-xs font-bold text-black hover:bg-amber-400 whitespace-nowrap"
+                className="rounded-xl bg-amber-500 px-5 py-2.5 text-sm font-bold text-black hover:bg-amber-400 whitespace-nowrap"
               >
                 Join Free List
               </button>
             </form>
           ) : (
-            <div className="text-xs font-bold text-emerald-400 bg-emerald-950/40 border border-emerald-500/30 px-4 py-3 rounded-xl">
+            <div className="text-sm font-bold text-emerald-400 bg-emerald-950/40 border border-emerald-500/30 px-4 py-3 rounded-xl">
               ✓ You are subscribed! Check your inbox/WhatsApp for your bonus toolkit.
             </div>
           )}
@@ -142,10 +142,10 @@ export default function FooterRingHorizon({
               </div>
               <p className="text-white">{brand}</p>
             </a>
-            {note && <p className="max-w-[20rem] text-balance text-[length:var(--text-small)] leading-[1.45] text-muted-foreground">{note}</p>}
+            {note && <p className="max-w-[20rem] text-balance text-[length:var(--text-small)] leading-[1.5] text-zinc-300 font-medium">{note}</p>}
             
             {/* Business info details */}
-            <div className="text-xs text-zinc-400 space-y-1">
+            <div className="text-sm text-zinc-200 space-y-1.5 font-medium">
               <div>📍 Lagos, Nigeria (9am–5pm WAT)</div>
               <div>✉️ <a href={`mailto:${siteConfig.email}`} className="hover:text-amber-400 underline">{siteConfig.email}</a></div>
               <div>📲 WhatsApp: <a href={`https://wa.me/${siteConfig.whatsapp.replace(/[^0-9]/g, "")}`} className="hover:text-amber-400 underline">{siteConfig.whatsapp}</a></div>
@@ -153,7 +153,7 @@ export default function FooterRingHorizon({
 
             {/* Social Links */}
             <div className="flex items-center gap-3 pt-2">
-              <span className="text-xs text-zinc-500 font-medium">Follow us:</span>
+              <span className="text-sm text-zinc-300 font-medium">Follow us:</span>
               <a
                 href="https://instagram.com"
                 target="_blank"
@@ -218,8 +218,8 @@ export default function FooterRingHorizon({
         </div>
 
         {/* Mandatory CAC Legal Disclaimer Box */}
-        <div className="rounded-xl border border-zinc-800 bg-zinc-950/80 p-4 text-xs text-zinc-400 leading-relaxed">
-          <span className="font-bold text-zinc-300 block mb-1">⚖️ Legal & Affiliation Disclaimer:</span>
+        <div className="rounded-xl border border-zinc-800 bg-zinc-950/80 p-4 text-sm text-zinc-200 leading-relaxed font-normal">
+          <span className="font-bold text-zinc-100 block mb-1">⚖️ Legal & Affiliation Disclaimer:</span>
           Register It Yourself provides general information and step-by-step guidance on the CAC registration process. It is not a law firm, does not provide legal advice, and is not affiliated with the Corporate Affairs Commission (CAC).
         </div>
 

@@ -36,7 +36,7 @@ export default function HomePage() {
           titleMuted="Yourself. This week."
           description="Skip the agent fees. Our step-by-step guide, and a real person on call if you want one, takes you from business idea to CAC certificate, first time."
           primaryButton={{
-            text: "Get the Guide — ₦10,000",
+            text: "Get Your CAC Certificate — ₦10,000",
             href: "#pricing"
           }}
           secondaryButton={{
@@ -119,7 +119,7 @@ export default function HomePage() {
                 "Instant download after purchase"
               ],
               button: {
-                text: "Get the Guide — ₦10,000",
+                text: "Get Your CAC Certificate — ₦10,000",
                 href: "#start-now"
               }
             },

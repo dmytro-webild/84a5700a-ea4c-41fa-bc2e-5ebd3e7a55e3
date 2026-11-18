@@ -54,7 +54,7 @@ export default function Layout() {
             },
           ]}
           primaryButton={{
-            text: "Get Started — ₦10k",
+            text: "Get Your CAC Certificate",
             href: "/ebook",
           }}
           secondaryButton={{

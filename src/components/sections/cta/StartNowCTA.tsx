@@ -19,21 +19,21 @@ export default function StartNowCTA({ className }: { className?: string }) {
               Register your business with CAC. Yourself. This week.
             </BlurReveal>
 
-            <BlurReveal as="p" delay={0.1} className="text-[length:var(--text-body-lg)] text-muted-foreground leading-relaxed">
+            <BlurReveal as="p" delay={0.1} className="text-[length:var(--text-body-lg)] text-foreground/85 leading-relaxed font-normal">
               Skip the agent fees. Our step-by-step guide, and a real person on call if you want one, takes you from business idea to official CAC certificate, first time.
             </BlurReveal>
 
             <BlurReveal delay={0.15} className="flex flex-col sm:flex-row items-center justify-center gap-4 w-full sm:w-auto pt-4">
-              <a href="#pricing" className="btn-primary w-full sm:w-auto justify-center text-base px-8 py-3.5">
-                <span>Get the Guide — ₦10,000</span>
+              <a href="#pricing" className="btn-primary w-full sm:w-auto justify-center text-base px-8 py-3.5 font-bold">
+                <span>Get Your CAC Certificate — ₦10,000</span>
                 <ArrowRight className="size-4" />
               </a>
-              <a href="#pricing" className="btn-secondary w-full sm:w-auto justify-center text-base px-8 py-3.5">
+              <a href="#pricing" className="btn-secondary w-full sm:w-auto justify-center text-base px-8 py-3.5 font-bold">
                 <span>Do It With Us — ₦25,000</span>
               </a>
             </BlurReveal>
 
-            <BlurReveal delay={0.2} className="flex flex-wrap items-center justify-center gap-6 text-xs text-muted-foreground pt-4 border-t border-border/60 w-full">
+            <BlurReveal delay={0.2} className="flex flex-wrap items-center justify-center gap-6 text-sm text-foreground/85 font-medium pt-4 border-t border-border/60 w-full">
               <span className="flex items-center gap-1.5">
                 <ShieldCheck className="size-4 text-primary" /> 100% CAC Approval Guarantee
               </span>
